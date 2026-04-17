@@ -1,169 +1,137 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <span class="eyebrow">Verified distributed compute</span>
-      <h1>Affordable AI compute, powered by idle Macs.</h1>
-      <p class="lede">Run verified batch AI workloads for less or earn from the Apple Silicon you already own.</p>
+<section class="hero hero-home">
+  <div class="hero-backdrop" aria-hidden="true"></div>
+  <div class="container hero-grid hero-grid-home">
+    <div class="hero-copy hero-copy-home">
+      <span class="eyebrow">Distributed compute marketplace</span>
+      <h1>Affordable AI compute powered by idle Macs.</h1>
+      <p class="lede">Run embeddings, transcription, OCR, and batch inference jobs for less or earn from the Apple Silicon you already own.</p>
       <div class="hero-actions">
-        <a class="button" href="/provider-dashboard">Get started as a provider</a>
-        <a class="button secondary" href="/customer-dashboard">Run a workload</a>
-        <a class="button ghost" href="/download">Download Mac app</a>
+        <a class="button" href="/developers">Run a workload</a>
+        <a class="button secondary" href="/providers">Earn with your Mac</a>
+        <a class="button ghost" href="/download">Request benchmark</a>
       </div>
-      <p class="supporting-line">Built for embeddings, transcription, OCR, preprocessing, and large batch jobs that do not need premium always-on cloud pricing.</p>
       <div class="trust-bar">
-        <span>Signed and notarized macOS app</span>
-        <span>Provider controls for power and schedule</span>
-        <span>Verified task completion</span>
-        <span>Transparent earnings and usage</span>
+        <span>Signed Mac app</span>
+        <span>Verified execution</span>
+        <span>Transparent resource controls</span>
+        <span>Provider payouts</span>
       </div>
     </div>
-
-    <aside class="hero-panel panel">
-      <div class="panel-kicker">What this network is for</div>
-      <div class="metric-grid">
-        <article class="metric">
-          <strong>Provider</strong>
-          <span>Put your Mac’s idle time to work on your schedule.</span>
-        </article>
-        <article class="metric">
-          <strong>Buyer</strong>
-          <span>Run batch AI workloads at lower cost with verified execution.</span>
-        </article>
-        <article class="metric">
-          <strong>Mac app</strong>
-          <span>Safe direct distribution with Developer ID signing and notarization.</span>
-        </article>
-      </div>
-      <div class="proof-card">
-        <h2>Product proof</h2>
-        <p>Common Commute turns idle Macs into a verified compute network for affordable AI workloads. The site is framed around trust, control, and fair payouts instead of generic infrastructure copy.</p>
-        <div class="proof-list">
-          <span>Idle hardware, not hidden software</span>
-          <span>Verified jobs before payout</span>
-          <span>Fair earnings for providers</span>
-          <span>Lower cost for buyers</span>
-        </div>
-      </div>
-    </aside>
-  </div>
-</section>
-
-<section class="container section">
-  <div class="section-heading">
-    <span class="eyebrow subtle">Trust bar</span>
-    <h2>Built to be clear before it is clever.</h2>
-    <p>The first screen should tell both sides what the product does, how it is controlled, and why it is safe to use.</p>
-  </div>
-  <div class="trust-grid">
-    <article class="feature-card">
-      <span class="card-label">Trust</span>
-      <h3>Transparent usage.</h3>
-      <p>Choose when the Mac app runs, keep control visible, and verify work before payout.</p>
-    </article>
-    <article class="feature-card">
-      <span class="card-label">Efficiency</span>
-      <h3>Lower-cost AI execution.</h3>
-      <p>Use existing hardware better. Reserve premium cloud for jobs that really need it.</p>
-    </article>
-    <article class="feature-card">
-      <span class="card-label">Fairness</span>
-      <h3>Good for both sides.</h3>
-      <p>Providers earn from spare capacity. Buyers pay less for batch workloads that do not need always-on latency.</p>
-    </article>
-  </div>
-</section>
-
-<section class="container section">
-  <div class="section-heading">
-    <span class="eyebrow subtle">For providers</span>
-    <h2>Earn from your idle Mac.</h2>
-    <p>Common Commute is designed to stay practical. It should feel like a useful utility, not background software you have to trust blindly.</p>
-  </div>
-  <div class="copy-grid">
-    <article class="stack-card">
-      <h3>Choose when jobs can run.</h3>
-      <p>Pause anytime. Run only when you want the Mac to be available for compute.</p>
-    </article>
-    <article class="stack-card">
-      <h3>Set CPU and GPU limits.</h3>
-      <p>Keep the machine responsive while it contributes idle cycles to verified work.</p>
-    </article>
-    <article class="stack-card">
-      <h3>Run only while plugged in.</h3>
-      <p>Use the Mac app to protect battery life and keep the setup predictable.</p>
-    </article>
-    <article class="stack-card">
-      <h3>Track earnings in real time.</h3>
-      <p>See what each verified task contributes so payout is transparent and easy to understand.</p>
-    </article>
-  </div>
-</section>
-
-<section class="container section">
-  <div class="section-heading">
-    <span class="eyebrow subtle">For customers</span>
-    <h2>Lower-cost batch AI workloads.</h2>
-    <p>Submit jobs through the dashboard or API and get verified results without paying premium cloud prices for every workload.</p>
-  </div>
-  <div class="bullet-grid">
-    <article class="feature-card">
-      <h3>Embeddings</h3>
-      <p>Process large batches without leaving a permanent GPU running.</p>
-    </article>
-    <article class="feature-card">
-      <h3>Transcription</h3>
-      <p>Run scheduled audio jobs with predictable cost and clear output.</p>
-    </article>
-    <article class="feature-card">
-      <h3>OCR</h3>
-      <p>Handle document extraction as a practical batch workflow.</p>
-    </article>
-    <article class="feature-card">
-      <h3>Preprocessing</h3>
-      <p>Prepare inputs for larger pipelines without paying for peak cloud capacity.</p>
-    </article>
-    <article class="feature-card">
-      <h3>Batch inference</h3>
-      <p>Use verified distributed compute for large jobs that can wait for the right worker.</p>
-    </article>
-  </div>
-</section>
-
-<section class="container section">
-  <div class="section-heading">
-    <span class="eyebrow subtle">Why Common Commute</span>
-    <h2>Cheaper than premium cloud for the right workloads.</h2>
-    <p>Common Commute is for batch jobs, not ultra-low-latency interactive inference. That is the correct expectation, and it keeps the product honest.</p>
-  </div>
-  <div class="copy-grid">
-    <article class="stack-card">
-      <h3>Fair earnings</h3>
-      <p>Idle Macs earn while their owners keep control over usage and timing.</p>
-    </article>
-    <article class="stack-card">
-      <h3>Predictable outcomes</h3>
-      <p>Verified task completion is a better fit for batch jobs than vague background processing.</p>
-    </article>
-    <article class="stack-card">
-      <h3>Practical savings</h3>
-      <p>Use affordable distributed execution when the job does not require premium always-on infrastructure.</p>
-    </article>
   </div>
 </section>
 
 <section class="container section">
   <div class="section-heading">
     <span class="eyebrow subtle">How it works</span>
-    <h2>Simple flow. Clear ownership. Verified payout.</h2>
+    <h2>A compute marketplace built for batch AI workloads.</h2>
   </div>
-  <ol class="steps-list">
-    <li>Providers install the Mac app.</li>
-    <li>Customers submit jobs through the dashboard or API.</li>
-    <li>Work is matched, executed, and verified.</li>
-    <li>Results are returned and providers get paid.</li>
-  </ol>
+  <div class="steps-grid">
+    <article class="step-card">
+      <span class="step-number">1</span>
+      <h3>Mac owners install Common Commute</h3>
+      <p>Choose when jobs run and how much compute to share.</p>
+    </article>
+    <article class="step-card">
+      <span class="step-number">2</span>
+      <h3>Developers submit workloads</h3>
+      <p>Upload datasets or call the API.</p>
+    </article>
+    <article class="step-card">
+      <span class="step-number">3</span>
+      <h3>Jobs are distributed and verified</h3>
+      <p>Tasks run securely across the network.</p>
+    </article>
+    <article class="step-card">
+      <span class="step-number">4</span>
+      <h3>Results return automatically</h3>
+      <p>Providers get paid when jobs complete successfully.</p>
+    </article>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Value proposition</span>
+    <h2>Cheaper than hyperscalers for the workloads that do not need them.</h2>
+    <p>Common Commute is optimized for embeddings generation, transcription pipelines, OCR processing, dataset preprocessing, and overnight batch inference. Not real-time GPU serving. Not training clusters. Just efficient batch compute.</p>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">For Mac owners</span>
+    <h2>Put your Mac’s idle time to work.</h2>
+    <p>Choose exactly when Common Commute runs: only when idle, only while plugged in, only overnight, capped CPU usage, and capped memory usage. Track earnings directly in the app.</p>
+  </div>
+  <div class="hero-actions">
+    <a class="button" href="/download">Download for macOS</a>
+    <a class="button secondary" href="/security">Read security</a>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">For developers</span>
+    <h2>Run batch inference without premium cloud pricing.</h2>
+    <p>Common Commute is ideal for RAG indexing, vector embeddings, Whisper transcription, OCR pipelines, dataset preparation, and other batch jobs that can wait for verified completion.</p>
+  </div>
+  <div class="bullet-grid">
+    <article class="feature-card">
+      <h3>Embeddings</h3>
+      <p>Process large batches without reserving a GPU for the whole day.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Transcription</h3>
+      <p>Turn audio archives into structured output at lower cost.</p>
+    </article>
+    <article class="feature-card">
+      <h3>OCR</h3>
+      <p>Extract text from scanned documents and PDFs reliably.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Dataset prep</h3>
+      <p>Prepare inputs for downstream pipelines without paying for idle infrastructure.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Batch inference</h3>
+      <p>Submit work through the dashboard or API and receive verified results automatically.</p>
+    </article>
+  </div>
+  <div class="hero-actions">
+    <a class="button" href="/download">Request benchmark</a>
+    <a class="button secondary" href="/docs">Read docs</a>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Trust</span>
+    <h2>Built for predictable, verifiable execution.</h2>
+  </div>
+  <div class="trust-grid">
+    <article class="feature-card">
+      <h3>Task verification</h3>
+      <p>Every workload is checked before it is counted as complete.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Retry scheduling</h3>
+      <p>Failed work can be retried instead of disappearing into the void.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Completion guarantees</h3>
+      <p>Completion state is tracked instead of implied.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Provider reputation scoring</h3>
+      <p>Worker history can inform routing and reliability decisions.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Transparent usage tracking</h3>
+      <p>Providers can see what was used and when.</p>
+    </article>
+  </div>
 </section>
 
 <section class="container section final-cta">
@@ -171,12 +139,11 @@
     <div>
       <span class="eyebrow subtle">Final CTA</span>
       <h2>Use spare compute better.</h2>
-      <p>Whether you want to lower AI processing costs or earn from idle hardware, Common Commute gives both sides a fairer option.</p>
+      <p>Run cheaper workloads or earn from idle hardware today.</p>
     </div>
     <div class="hero-actions">
-      <a class="button" href="/provider-dashboard">Get started as a provider</a>
-      <a class="button secondary" href="/customer-dashboard">Run a workload</a>
-      <a class="button ghost" href="/download">Download Mac app</a>
+      <a class="button" href="/download">Download Mac app</a>
+      <a class="button secondary" href="/developers">Run your first job</a>
     </div>
   </div>
 </section>

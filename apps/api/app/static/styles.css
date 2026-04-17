@@ -124,6 +124,12 @@ a {
   transition: background 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
+.nav-links a.is-active {
+  color: var(--ink);
+  background: rgba(47, 111, 236, 0.08);
+  border-color: rgba(47, 111, 236, 0.18);
+}
+
 .nav-links a:hover {
   color: var(--ink);
   background: rgba(16, 36, 59, 0.04);
@@ -131,8 +137,24 @@ a {
   transform: translateY(-1px);
 }
 
-.hero {
+.hero,
+.page-hero {
   padding: 40px 0 12px;
+}
+
+.hero-home {
+  position: relative;
+  overflow: hidden;
+  padding: 54px 0 22px;
+}
+
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 420px at 20% 0%, rgba(47, 111, 236, 0.16), transparent 65%),
+    radial-gradient(700px 320px at 85% 8%, rgba(45, 154, 118, 0.18), transparent 55%);
+  pointer-events: none;
 }
 
 .hero-grid {
@@ -142,17 +164,30 @@ a {
   align-items: stretch;
 }
 
+.hero-grid-home {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
 .hero-copy,
 .hero-panel,
 .panel,
 .feature-card,
 .stack-card,
-.download-card {
+.download-card,
+.step-card,
+.price-card,
+.doc-card {
   animation: rise 700ms ease both;
 }
 
 .hero-copy {
   padding: 18px 0 30px;
+}
+
+.hero-copy-home {
+  max-width: 780px;
 }
 
 .eyebrow,
@@ -280,7 +315,10 @@ button.secondary {
 .panel,
 .feature-card,
 .stack-card,
-.download-card {
+.download-card,
+.step-card,
+.price-card,
+.doc-card {
   border: 1px solid var(--line);
   background: var(--surface);
   box-shadow: var(--shadow);
@@ -356,6 +394,14 @@ button.secondary {
   padding: 34px 0 10px;
 }
 
+.page-hero-inner {
+  max-width: 840px;
+}
+
+.page-hero .lede {
+  max-width: 68ch;
+}
+
 .section-heading {
   margin-bottom: 18px;
   max-width: 780px;
@@ -371,7 +417,11 @@ button.secondary {
 .trust-grid,
 .copy-grid,
 .bullet-grid,
-.download-grid {
+.download-grid,
+.steps-grid,
+.price-grid,
+.docs-grid,
+.cards-rail {
   display: grid;
   gap: 16px;
 }
@@ -391,17 +441,36 @@ button.secondary {
   margin-top: 16px;
 }
 
+.steps-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.price-grid,
+.docs-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cards-rail {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .feature-card,
 .stack-card,
 .form-card,
-.download-card {
+.download-card,
+.step-card,
+.price-card,
+.doc-card {
   padding: 22px;
 }
 
 .feature-card h3,
 .stack-card h3,
 .form-card h3,
-.download-card h2 {
+.download-card h2,
+.step-card h3,
+.price-card h3,
+.doc-card h3 {
   margin: 14px 0 10px;
   font-size: 1.35rem;
   line-height: 1.1;
@@ -516,6 +585,42 @@ pre {
   margin-top: 8px;
 }
 
+.section-footnote,
+.card-note {
+  margin-top: 12px;
+  color: var(--ink-soft);
+}
+
+.step-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-weight: 800;
+}
+
+.price-card p {
+  margin: 10px 0 8px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.price-card span,
+.doc-card p,
+.step-card p {
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
 .final-cta {
   padding-bottom: 42px;
 }
@@ -537,6 +642,41 @@ pre {
   font-size: clamp(2rem, 4vw, 3rem);
 }
 
+.site-footer {
+  margin-top: 20px;
+  padding: 28px 0 40px;
+  border-top: 1px solid rgba(16, 36, 59, 0.08);
+  background: rgba(251, 252, 254, 0.68);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.6fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.footer-brand p {
+  margin: 12px 0 0;
+  max-width: 42ch;
+  color: var(--ink-soft);
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 16px;
+  justify-items: start;
+}
+
+.footer-links a {
+  color: var(--ink-soft);
+}
+
+.footer-actions {
+  margin-top: 18px;
+}
+
 @keyframes rise {
   from {
     opacity: 0;
@@ -555,6 +695,10 @@ pre {
   .copy-grid,
   .bullet-grid,
   .download-grid,
+  .steps-grid,
+  .price-grid,
+  .docs-grid,
+  .cards-rail,
   .metric-grid:not(.dashboard-summary),
   .form-grid.two-up {
     grid-template-columns: 1fr;
@@ -570,6 +714,10 @@ pre {
   .nav-links {
     justify-content: flex-start;
   }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
@@ -583,6 +731,10 @@ pre {
 
   .hero {
     padding-top: 26px;
+  }
+
+  .hero-home {
+    padding-top: 30px;
   }
 
   .hero h1,

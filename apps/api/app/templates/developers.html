@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="eyebrow subtle">For developers</span>
+    <h1>Batch AI workloads at lower cost.</h1>
+    <p class="lede">Submit jobs through API or dashboard and receive verified results automatically.</p>
+    <div class="hero-actions">
+      <a class="button" href="/docs">Get API access</a>
+      <a class="button secondary" href="/pricing">See pricing</a>
+    </div>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Supported workloads</span>
+    <h2>Built for batch work, not live serving.</h2>
+  </div>
+  <div class="bullet-grid">
+    <article class="feature-card"><h3>Embeddings</h3><p>Generate vectors for large corpora.</p></article>
+    <article class="feature-card"><h3>Transcription</h3><p>Convert audio archives into text.</p></article>
+    <article class="feature-card"><h3>OCR</h3><p>Extract text from documents and scanned PDFs.</p></article>
+    <article class="feature-card"><h3>Dataset preprocessing</h3><p>Prepare inputs for downstream workflows.</p></article>
+    <article class="feature-card"><h3>Image inference</h3><p>Run image jobs that can wait for verified completion.</p></article>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Best use cases</span>
+    <h2>Fit the workloads that do not need premium always-on cloud pricing.</h2>
+  </div>
+  <div class="copy-grid">
+    <article class="stack-card"><h3>Index millions of documents overnight</h3><p>Use distributed compute when throughput matters more than latency.</p></article>
+    <article class="stack-card"><h3>Transcribe audio archives</h3><p>Process historical libraries as a batch queue.</p></article>
+    <article class="stack-card"><h3>Prepare training datasets</h3><p>Run the boring parts of the pipeline on cheaper compute.</p></article>
+    <article class="stack-card"><h3>Process scanned PDFs</h3><p>Convert document backlogs into structured text.</p></article>
+    <article class="stack-card"><h3>Run large embedding pipelines</h3><p>Scale out work without paying hyperscaler prices for idle capacity.</p></article>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Sample API flow</span>
+    <h2>Upload dataset. Submit job. Track progress. Download results.</h2>
+  </div>
+  <div class="steps-grid">
+    <article class="step-card"><span class="step-number">1</span><h3>Upload dataset</h3><p>Send the input the job needs.</p></article>
+    <article class="step-card"><span class="step-number">2</span><h3>Submit job</h3><p>Create the workload from the dashboard or API.</p></article>
+    <article class="step-card"><span class="step-number">3</span><h3>Track progress</h3><p>Watch verification and completion state as the job runs.</p></article>
+    <article class="step-card"><span class="step-number">4</span><h3>Download results</h3><p>Fetch output when the verified work is done.</p></article>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Integrations</span>
+    <h2>Designed to fit the tools teams already use.</h2>
+  </div>
+  <div class="trust-grid">
+    <article class="feature-card"><h3>LangChain</h3><p>Useful when Common Commute is one backend in a larger pipeline.</p></article>
+    <article class="feature-card"><h3>LlamaIndex</h3><p>Fits indexing and retrieval workflows.</p></article>
+    <article class="feature-card"><h3>Airflow</h3><p>Use scheduled batch orchestration.</p></article>
+    <article class="feature-card"><h3>Ray</h3><p>Coordinate distributed tasks across the network.</p></article>
+    <article class="feature-card"><h3>Prefect</h3><p>Keep the job flow explicit and observable.</p></article>
+  </div>
+  <div class="hero-actions">
+    <a class="button" href="/download">Run a benchmark</a>
+    <a class="button secondary" href="/pricing">Request estimate</a>
+  </div>
+</section>
+{% endblock %}

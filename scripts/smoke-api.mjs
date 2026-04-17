@@ -47,8 +47,12 @@ async function main() {
     throw new Error("Landing page did not render expected brand");
   }
 
-  await fetchText("/provider-dashboard");
-  await fetchText("/customer-dashboard");
+  await fetchText("/providers");
+  await fetchText("/developers");
+  await fetchText("/pricing");
+  await fetchText("/security");
+  await fetchText("/download");
+  await fetchText("/docs");
 
   const suffix = randomSuffix();
   const customerEmail = `customer-${suffix}@example.com`;

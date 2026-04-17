@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="eyebrow subtle">{{ eyebrow }}</span>
+    <h1>{{ headline }}</h1>
+    <p class="lede">{{ lead }}</p>
+    <div class="hero-actions">
+      {% if cta_primary %}
+        <a class="button" href="{{ cta_primary.href }}">{{ cta_primary.label }}</a>
+      {% endif %}
+      {% if cta_secondary %}
+        <a class="button secondary" href="{{ cta_secondary.href }}">{{ cta_secondary.label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="cards-rail">
+    {% for card in cards or [] %}
+      <article class="stack-card">
+        <h3>{{ card.title }}</h3>
+        <p>{{ card.body }}</p>
+        {% if card.note %}
+          <p class="card-note">{{ card.note }}</p>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

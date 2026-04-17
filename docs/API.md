@@ -8,9 +8,20 @@ Base URLs:
 Website routes:
 
 - `GET /`
-- `GET /provider-dashboard`
-- `GET /customer-dashboard`
+- `GET /providers`
+- `GET /developers`
+- `GET /pricing`
+- `GET /security`
+- `GET /download`
 - `GET /docs`
+- `GET /about`
+- `GET /blog`
+- `GET /status`
+- `GET /privacy`
+- `GET /terms`
+- `GET /support`
+- `GET /careers`
+- `GET /api-docs`
 
 ## Auth
 

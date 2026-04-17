@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="eyebrow subtle">For Mac owners</span>
+    <h1>Earn from your idle Mac.</h1>
+    <p class="lede">Common Commute runs only within the limits you choose.</p>
+    <div class="hero-actions">
+      <a class="button" href="/download">Download the app</a>
+      <a class="button secondary" href="/security">Read security</a>
+    </div>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">How it works</span>
+    <h2>Install the app, choose limits, stay in control.</h2>
+  </div>
+  <div class="steps-grid">
+    <article class="step-card"><span class="step-number">1</span><h3>Install the app</h3><p>Download the signed Mac app and sign in.</p></article>
+    <article class="step-card"><span class="step-number">2</span><h3>Choose resource limits</h3><p>Set how much compute the app can use.</p></article>
+    <article class="step-card"><span class="step-number">3</span><h3>Stay idle or keep working</h3><p>The app should respect the schedule you set.</p></article>
+    <article class="step-card"><span class="step-number">4</span><h3>Earn when jobs complete</h3><p>Verified jobs turn into earnings in real time.</p></article>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Control features</span>
+    <h2>You decide.</h2>
+  </div>
+  <div class="copy-grid">
+    <article class="stack-card"><h3>Run only overnight</h3><p>Use spare hours without keeping the app active all day.</p></article>
+    <article class="stack-card"><h3>Run only when idle</h3><p>Keep Common Commute out of the way while you are using the machine.</p></article>
+    <article class="stack-card"><h3>Pause anytime</h3><p>Stop sharing compute immediately from the app or menu bar.</p></article>
+    <article class="stack-card"><h3>Set CPU limits</h3><p>Keep the Mac responsive while it contributes idle cycles.</p></article>
+    <article class="stack-card"><h3>Require power connection</h3><p>Protect battery life and thermal headroom.</p></article>
+  </div>
+  <p class="section-footnote">Your machine stays yours.</p>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Earnings model</span>
+    <h2>Providers earn when tasks complete successfully.</h2>
+  </div>
+  <div class="trust-grid">
+    <article class="feature-card"><h3>Verified completion</h3><p>Tasks count when they complete and pass verification.</p></article>
+    <article class="feature-card"><h3>Correct uploads</h3><p>Results are only paid once they are uploaded correctly.</p></article>
+    <article class="feature-card"><h3>Real-time updates</h3><p>Earnings update as jobs finish.</p></article>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Security</span>
+    <h2>The Common Commute app is signed, notarized, and limited by design.</h2>
+  </div>
+  <div class="copy-grid">
+    <article class="stack-card"><h3>Signed</h3><p>The Mac app should use Apple Developer ID signing for direct distribution.</p></article>
+    <article class="stack-card"><h3>Notarized</h3><p>Apple notarization helps Gatekeeper verify the downloaded app.</p></article>
+    <article class="stack-card"><h3>Approved workloads only</h3><p>Providers should run only the workloads the platform allows.</p></article>
+    <article class="stack-card"><h3>No personal files</h3><p>The execution environment should never access personal files.</p></article>
+  </div>
+  <div class="hero-actions">
+    <a class="button" href="/download">Start earning with your Mac</a>
+    <a class="button secondary" href="/docs">Read provider docs</a>
+  </div>
+</section>
+{% endblock %}

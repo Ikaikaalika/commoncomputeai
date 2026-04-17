@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="eyebrow subtle">Security</span>
+    <h1>Security and verification built into every job.</h1>
+    <p class="lede">The platform should prevent unwanted activity and make the execution model visible to both sides of the marketplace.</p>
+    <div class="hero-actions">
+      <a class="button" href="/docs">Read documentation</a>
+      <a class="button secondary" href="/download">Download app</a>
+    </div>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Provider safety</span>
+    <h2>Providers control the runtime.</h2>
+  </div>
+  <div class="copy-grid">
+    <article class="stack-card"><h3>Runtime schedule</h3><p>Choose when jobs can run.</p></article>
+    <article class="stack-card"><h3>CPU usage</h3><p>Keep the machine responsive with explicit caps.</p></article>
+    <article class="stack-card"><h3>Memory usage</h3><p>Set boundaries that fit the machine and the task.</p></article>
+    <article class="stack-card"><h3>Network usage</h3><p>Keep execution inside approved limits.</p></article>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Customer safety</span>
+    <h2>Jobs include verification checks and fallback routing.</h2>
+  </div>
+  <div class="trust-grid">
+    <article class="feature-card"><h3>Verification checks</h3><p>Results should be validated before completion.</p></article>
+    <article class="feature-card"><h3>Retry routing</h3><p>Failed work can move to another provider.</p></article>
+    <article class="feature-card"><h3>Re-execution fallback</h3><p>Work can be rerun when the network needs another pass.</p></article>
+    <article class="feature-card"><h3>Completion tracking</h3><p>Customers should see what finished and when.</p></article>
+  </div>
+</section>
+
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Platform safety</span>
+    <h2>Common Commute prevents unauthorized workloads and hidden background activity.</h2>
+  </div>
+  <div class="copy-grid">
+    <article class="stack-card"><h3>Approved workloads only</h3><p>Execution should be limited to expected job types.</p></article>
+    <article class="stack-card"><h3>No persistent background execution outside limits</h3><p>The app should stop when the provider says it should stop.</p></article>
+    <article class="stack-card"><h3>No access to personal files</h3><p>The platform should not inspect user documents.</p></article>
+  </div>
+  <div class="hero-actions">
+    <a class="button" href="/docs">Read documentation</a>
+    <a class="button secondary" href="/providers">Start earning with your Mac</a>
+  </div>
+</section>
+{% endblock %}

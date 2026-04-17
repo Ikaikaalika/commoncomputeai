@@ -25,23 +25,48 @@ def test_public_pages_render(tmp_path, monkeypatch):
     client = TestClient(app)
 
     landing = client.get("/")
-    provider = client.get("/provider-dashboard")
-    customer = client.get("/customer-dashboard")
+    providers = client.get("/providers")
+    developers = client.get("/developers")
+    pricing = client.get("/pricing")
+    security = client.get("/security")
     download = client.get("/download")
+    docs = client.get("/docs")
+    legacy_provider = client.get("/provider-dashboard", follow_redirects=False)
+    legacy_customer = client.get("/customer-dashboard", follow_redirects=False)
 
     assert landing.status_code == 200
     assert "Common Commute" in landing.text
-    assert "Affordable AI compute, powered by idle Macs." in landing.text
+    assert "Affordable AI compute powered by idle Macs." in landing.text
     assert 'window.COMMONCOMMUTE_API_BASE_URL = "https://api.commoncommute.ai";' in landing.text
+    assert "Run a workload" in landing.text
+    assert "Earn with your Mac" in landing.text
 
-    assert provider.status_code == 200
-    assert "Your Mac already has spare compute. Common Commute helps it earn." in provider.text
+    assert providers.status_code == 200
+    assert "Earn from your idle Mac." in providers.text
+    assert "Start earning with your Mac" in providers.text
 
-    assert customer.status_code == 200
-    assert "Run batch AI jobs for less." in customer.text
+    assert developers.status_code == 200
+    assert "Batch AI workloads at lower cost." in developers.text
+    assert "Run a benchmark" in developers.text
+
+    assert pricing.status_code == 200
+    assert "Pay for completed work, not idle infrastructure." in pricing.text
+
+    assert security.status_code == 200
+    assert "Security and verification built into every job." in security.text
 
     assert download.status_code == 200
     assert "Download Common Commute for Mac." in download.text
+    assert "macOS Ventura or newer" in download.text
+
+    assert docs.status_code == 200
+    assert "Documentation for providers and developers." in docs.text
+
+    assert legacy_provider.status_code == 307
+    assert legacy_provider.headers["location"] == "/providers"
+
+    assert legacy_customer.status_code == 307
+    assert legacy_customer.headers["location"] == "/developers"
 
 
 def test_full_marketplace_flow(tmp_path, monkeypatch):

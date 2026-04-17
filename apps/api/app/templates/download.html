@@ -1,48 +1,61 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="container section">
-  <div class="section-heading download-hero">
-    <span class="eyebrow subtle">Mac download</span>
+<section class="page-hero">
+  <div class="container page-hero-inner">
+    <span class="eyebrow subtle">Download</span>
     <h1>Download Common Commute for Mac.</h1>
-    <p>The Common Commute Mac app is signed with Developer ID and notarized by Apple for direct distribution outside the Mac App Store. That helps Gatekeeper verify the app when users download and open it.</p>
+    <p class="lede">Common Commute is signed with Developer ID and notarized for secure installation.</p>
     <div class="hero-actions">
-      <a class="button" href="#release-notes">View release notes</a>
-      <a class="button secondary" href="/provider-dashboard">Go to provider workspace</a>
+      <a class="button" href="#install-steps">Download now</a>
+      <a class="button secondary" href="/security">Read security</a>
     </div>
   </div>
+</section>
 
-  <div class="download-grid">
-    <article class="download-card">
-      <h2>After download</h2>
-      <ol class="steps-list">
-        <li>Open the app.</li>
-        <li>Sign in or create an account.</li>
-        <li>Choose your resource limits.</li>
-        <li>Start earning when your Mac is idle.</li>
-      </ol>
-    </article>
-
-    <article class="download-card" id="release-notes">
-      <h2>Release checklist</h2>
-      <ul class="subtle-list">
-        <li>Developer ID signed</li>
-        <li>Apple notarized</li>
-        <li>Stapled for simpler first launch</li>
-        <li>Hosted on your site or CDN</li>
-      </ul>
-    </article>
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Requirements</span>
+    <h2>macOS Ventura or newer. Apple Silicon recommended. Intel supported optionally.</h2>
   </div>
+  <div class="trust-grid">
+    <article class="feature-card"><h3>Signed</h3><p>The app should use Apple Developer ID signing.</p></article>
+    <article class="feature-card"><h3>Notarized</h3><p>Apple notarization helps Gatekeeper verify the download.</p></article>
+    <article class="feature-card"><h3>Stoppable</h3><p>Providers can pause or change limits anytime.</p></article>
+  </div>
+</section>
 
-  <div class="download-grid">
-    <article class="download-card">
-      <h2>What the page should say</h2>
-      <p>Signed and notarized. Safe to install. Clear about usage. Easy to pause. Fair to the provider.</p>
-    </article>
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Install steps</span>
+    <h2 id="install-steps">Download. Open. Sign in. Set limits. Start earning.</h2>
+  </div>
+  <div class="steps-grid">
+    <article class="step-card"><span class="step-number">1</span><h3>Download</h3><p>Grab the Mac app from the site or CDN.</p></article>
+    <article class="step-card"><span class="step-number">2</span><h3>Open app</h3><p>Launch the signed, notarized build.</p></article>
+    <article class="step-card"><span class="step-number">3</span><h3>Sign in</h3><p>Create an account or use an existing one.</p></article>
+    <article class="step-card"><span class="step-number">4</span><h3>Set compute limits</h3><p>Choose schedule, CPU caps, and power requirements.</p></article>
+    <article class="step-card"><span class="step-number">5</span><h3>Start earning</h3><p>Receive verified work when the machine is idle.</p></article>
+  </div>
+</section>
 
-    <article class="download-card">
-      <h2>Support copy</h2>
-      <p>Mac owners care about safety, thermal limits, and payout. Buyers care about cost, reliability, and verified work. The download page should answer both concerns directly.</p>
-    </article>
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Trust copy</span>
+    <h2>The Common Commute Mac app is signed with Developer ID and notarized for secure installation.</h2>
+  </div>
+</section>
+
+<section class="container section final-cta">
+  <div class="final-cta-panel">
+    <div>
+      <span class="eyebrow subtle">CTA</span>
+      <h2>Download now.</h2>
+      <p>Install Common Commute, set your limits, and let the idle Mac do useful work.</p>
+    </div>
+    <div class="hero-actions">
+      <a class="button" href="/providers">Start earning with your Mac</a>
+      <a class="button secondary" href="/developers">Run a batch workload</a>
+    </div>
   </div>
 </section>
 {% endblock %}

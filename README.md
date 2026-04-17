@@ -15,8 +15,9 @@ Common Commute is a Mac-first distributed compute marketplace. The canonical pro
 ## What this build ships
 
 - Public landing page for the new Common Commute direction
-- Provider dashboard for register, login, device enrollment, polling, and completion
-- Customer dashboard for register, login, and job submission
+- For Mac Owners page for provider onboarding, controls, and earnings
+- For Developers page for workload submission and API access
+- Pricing, Security, Docs, and Download pages for the launch funnel
 - FastAPI API with SQLite-backed local development
 - Native macOS provider app that can target a configured backend URL
 - AWS starter architecture notes for production hosting
@@ -41,9 +42,13 @@ uvicorn app.main:app --reload
 
 3. Open:
 - Landing page: `http://127.0.0.1:8000/`
-- Provider dashboard: `http://127.0.0.1:8000/provider-dashboard`
-- Customer dashboard: `http://127.0.0.1:8000/customer-dashboard`
-- API docs: `http://127.0.0.1:8000/docs`
+- For Mac Owners: `http://127.0.0.1:8000/providers`
+- For Developers: `http://127.0.0.1:8000/developers`
+- Pricing: `http://127.0.0.1:8000/pricing`
+- Security: `http://127.0.0.1:8000/security`
+- Docs: `http://127.0.0.1:8000/docs`
+- Download: `http://127.0.0.1:8000/download`
+- API docs: `http://127.0.0.1:8000/api-docs`
 
 4. Seed demo data if needed:
 

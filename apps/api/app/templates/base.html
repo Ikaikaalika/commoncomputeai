@@ -27,6 +27,10 @@
             <a class="{% if page_path == link.href %}is-active{% endif %}" href="{{ link.href }}">{{ link.label }}</a>
           {% endfor %}
         </nav>
+        <div class="site-actions">
+          <a class="button button-small secondary" href="/developers">Run a batch workload</a>
+          <a class="button button-small" href="/providers">Start earning with your Mac</a>
+        </div>
       </div>
     </header>
 
@@ -38,10 +42,12 @@
       <div class="container footer-grid">
         <div class="footer-brand">
           <span class="eyebrow subtle">Common Commute</span>
-          <p>Affordable AI compute powered by idle Macs.</p>
-          <div class="hero-actions footer-actions">
-            <a class="button" href="/download">Download Mac app</a>
-            <a class="button secondary" href="/developers">Run a batch workload</a>
+          <h2>Trusted distributed compute for practical AI workloads.</h2>
+          <p>Common Commute is a distributed compute network powered by idle Macs, designed for affordable batch AI workloads like embeddings, transcription, OCR, and dataset preprocessing.</p>
+          <div class="cta-triad footer-actions">
+            <a class="button secondary" href="/providers">Start earning with your Mac</a>
+            <a class="button" href="/developers">Run a batch workload</a>
+            <a class="button ghost" href="/developers#benchmark">Request benchmark</a>
           </div>
         </div>
 

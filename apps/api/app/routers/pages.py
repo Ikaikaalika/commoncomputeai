@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 
 from fastapi import APIRouter, Request
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 router = APIRouter(tags=["pages"])
@@ -324,12 +324,3 @@ def careers_page(request: Request):
         ),
     )
 
-
-@router.get("/provider-dashboard", response_class=HTMLResponse)
-def provider_dashboard_redirect():
-    return RedirectResponse("/providers", status_code=307)
-
-
-@router.get("/customer-dashboard", response_class=HTMLResponse)
-def customer_dashboard_redirect():
-    return RedirectResponse("/developers", status_code=307)

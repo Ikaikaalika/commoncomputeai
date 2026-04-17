@@ -40,6 +40,7 @@ def test_public_pages_render(tmp_path, monkeypatch):
     assert 'window.COMMONCOMMUTE_API_BASE_URL = "https://api.commoncommute.ai";' in landing.text
     assert "Run a workload" in landing.text
     assert "Earn with your Mac" in landing.text
+    assert "Is this crypto mining?" in landing.text
 
     assert providers.status_code == 200
     assert "Earn from your idle Mac." in providers.text
@@ -62,11 +63,8 @@ def test_public_pages_render(tmp_path, monkeypatch):
     assert docs.status_code == 200
     assert "Documentation for providers and developers." in docs.text
 
-    assert legacy_provider.status_code == 307
-    assert legacy_provider.headers["location"] == "/providers"
-
-    assert legacy_customer.status_code == 307
-    assert legacy_customer.headers["location"] == "/developers"
+    assert legacy_provider.status_code == 404
+    assert legacy_customer.status_code == 404
 
 
 def test_full_marketplace_flow(tmp_path, monkeypatch):

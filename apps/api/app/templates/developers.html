@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<section class="page-hero">
+<section class="page-hero" id="benchmark">
   <div class="container page-hero-inner">
     <span class="eyebrow subtle">For developers</span>
     <h1>Batch AI workloads at lower cost.</h1>
     <p class="lede">Submit jobs through API or dashboard and receive verified results automatically.</p>
     <div class="hero-actions">
       <a class="button" href="/docs">Get API access</a>
-      <a class="button secondary" href="/pricing">See pricing</a>
+      <a class="button secondary" href="/developers#benchmark-request">Run a benchmark</a>
     </div>
   </div>
 </section>
@@ -51,6 +51,14 @@
     <article class="step-card"><span class="step-number">3</span><h3>Track progress</h3><p>Watch verification and completion state as the job runs.</p></article>
     <article class="step-card"><span class="step-number">4</span><h3>Download results</h3><p>Fetch output when the verified work is done.</p></article>
   </div>
+  <div class="code-panel">
+    <pre><code>POST /customers/jobs
+GET /customers/jobs/{job_id}
+GET /customers/me
+
+Input: dataset URI or uploaded artifacts
+Output: verified batch results</code></pre>
+  </div>
 </section>
 
 <section class="container section">
@@ -65,9 +73,10 @@
     <article class="feature-card"><h3>Ray</h3><p>Coordinate distributed tasks across the network.</p></article>
     <article class="feature-card"><h3>Prefect</h3><p>Keep the job flow explicit and observable.</p></article>
   </div>
-  <div class="hero-actions">
-    <a class="button" href="/download">Run a benchmark</a>
+  <div class="cta-triad hero-actions" id="benchmark-request">
+    <a class="button" href="/developers#benchmark">Run a benchmark</a>
     <a class="button secondary" href="/pricing">Request estimate</a>
+    <a class="button ghost" href="/providers">Start earning with your Mac</a>
   </div>
 </section>
 {% endblock %}

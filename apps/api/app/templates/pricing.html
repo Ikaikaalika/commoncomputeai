@@ -11,14 +11,9 @@
 <section class="container section">
   <div class="section-heading">
     <span class="eyebrow subtle">Positioning</span>
-    <h2>Pricing depends on workload type, dataset size, completion target, and verification level.</h2>
+    <h2>Pricing depends on workload type, dataset size, completion time target, and verification level.</h2>
   </div>
-  <div class="copy-grid">
-    <article class="stack-card"><h3>Embeddings</h3><p>Good for large, repetitive vector generation jobs.</p></article>
-    <article class="stack-card"><h3>Transcription</h3><p>Useful for audio archives and scheduled pipelines.</p></article>
-    <article class="stack-card"><h3>OCR</h3><p>Works for scanned documents and PDFs.</p></article>
-    <article class="stack-card"><h3>Preprocessing</h3><p>Use when the job is important but not latency sensitive.</p></article>
-  </div>
+  <p class="section-intro">Common Commute is built for batch inference workloads. The right price depends on the job, the amount of data, and how strict the verification path needs to be.</p>
 </section>
 
 <section class="container section">
@@ -26,27 +21,38 @@
     <span class="eyebrow subtle">Example pricing table</span>
     <h2>Customize later once benchmarks exist.</h2>
   </div>
-  <div class="price-grid">
-    <article class="price-card">
-      <h3>Embeddings</h3>
-      <p>Benchmark pending</p>
-      <span>Best for document indexing and batch vectorization.</span>
-    </article>
-    <article class="price-card">
-      <h3>Transcription</h3>
-      <p>Benchmark pending</p>
-      <span>Best for archives, call libraries, and media backlogs.</span>
-    </article>
-    <article class="price-card">
-      <h3>OCR</h3>
-      <p>Benchmark pending</p>
-      <span>Best for scanned PDFs and structured extraction.</span>
-    </article>
-    <article class="price-card">
-      <h3>Preprocessing</h3>
-      <p>Benchmark pending</p>
-      <span>Best for cleaning and reshaping input datasets.</span>
-    </article>
+  <div class="table-shell">
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Workload</th>
+          <th>Fit</th>
+          <th>Current benchmark</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Embeddings</td>
+          <td>Large document and retrieval indexing runs</td>
+          <td>Customize later</td>
+        </tr>
+        <tr>
+          <td>Transcription</td>
+          <td>Audio archives and scheduled media pipelines</td>
+          <td>Customize later</td>
+        </tr>
+        <tr>
+          <td>OCR</td>
+          <td>Scanned PDFs and document extraction batches</td>
+          <td>Customize later</td>
+        </tr>
+        <tr>
+          <td>Preprocessing</td>
+          <td>Dataset cleanup and pipeline preparation</td>
+          <td>Customize later</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
@@ -55,9 +61,10 @@
     <span class="eyebrow subtle">CTA</span>
     <h2>Request an estimate for your workload.</h2>
   </div>
-  <div class="hero-actions">
-    <a class="button" href="/download">Request estimate</a>
-    <a class="button secondary" href="/docs">Read docs</a>
+  <div class="cta-triad hero-actions">
+    <a class="button secondary" href="/providers">Start earning with your Mac</a>
+    <a class="button" href="/developers">Run a batch workload</a>
+    <a class="button ghost" href="/developers#benchmark">Request benchmark</a>
   </div>
 </section>
 {% endblock %}

@@ -259,8 +259,26 @@ button.secondary {
 
 /* Hero */
 .hero,
-.page-hero {
-  padding: 56px 0 20px;
+.page-hero,
+.content-hero {
+  padding: 72px 0 28px;
+  position: relative;
+}
+
+.content-hero-inner {
+  max-width: 860px;
+  position: relative;
+  z-index: 1;
+}
+
+.content-hero h1 {
+  margin: 18px 0 14px;
+  font-size: clamp(2.4rem, 4.6vw, 3.8rem);
+  max-width: 16ch;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+  color: var(--ink);
+  font-weight: 600;
 }
 
 .hero-home {
@@ -504,7 +522,7 @@ button.secondary {
 
 .signal-row {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 20px;
@@ -953,7 +971,7 @@ pre code {
 
 .final-cta-panel {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 28px;
   padding: 40px;

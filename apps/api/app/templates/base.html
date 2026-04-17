@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ page_title or "Common Commute" }}</title>
-  <meta name="description" content="{{ page_description or 'Common Commute' }}" />
-  <meta name="theme-color" content="#10243b" />
+  <title>{{ page_title or "Common Compute" }}</title>
+  <meta name="description" content="{{ page_description or 'Common Compute' }}" />
+  <meta name="theme-color" content="#07070a" />
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
   <link rel="stylesheet" href="/static/styles.css" />
   <script>
     window.COMMONCOMMUTE_API_BASE_URL = "{{ api_base_url }}";
@@ -13,13 +15,21 @@
 </head>
 <body>
   <div class="app-shell">
+    <div class="top-banner">
+      <div class="container top-banner-inner">
+        <span class="top-banner-pill">New</span>
+        <span>Earn from your idle Mac — providers start receiving tasks in minutes.</span>
+        <a href="/providers" class="top-banner-link">Start earning &rarr;</a>
+      </div>
+    </div>
+
     <header class="site-header">
       <div class="container header-row">
-        <a class="brand" href="/" aria-label="Common Commute home">
+        <a class="brand" href="/" aria-label="Common Compute home">
           <span class="brand-mark" aria-hidden="true"></span>
           <span class="brand-copy">
-            <strong>Common Commute</strong>
-            <span>Idle Macs. Useful compute.</span>
+            <strong>Common Compute</strong>
+            <span>idle macs · useful compute</span>
           </span>
         </a>
         <nav class="nav-links" aria-label="Primary">
@@ -28,8 +38,8 @@
           {% endfor %}
         </nav>
         <div class="site-actions">
-          <a class="button button-small secondary" href="/developers">Run a batch workload</a>
-          <a class="button button-small" href="/providers">Start earning with your Mac</a>
+          <a class="nav-login" href="/developers">Log in</a>
+          <a class="button button-small" href="/developers">Get started</a>
         </div>
       </div>
     </header>
@@ -41,13 +51,12 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div class="footer-brand">
-          <span class="eyebrow subtle">Common Commute</span>
-          <h2>Trusted distributed compute for practical AI workloads.</h2>
-          <p>Common Commute is a distributed compute network powered by idle Macs, designed for affordable batch AI workloads like embeddings, transcription, OCR, and dataset preprocessing.</p>
+          <span class="eyebrow subtle">Common Compute</span>
+          <h2>Practical distributed compute for batch AI workloads.</h2>
+          <p>Common Compute is a distributed compute network powered by idle Macs — for embeddings, transcription, OCR, and dataset preprocessing.</p>
           <div class="cta-triad footer-actions">
-            <a class="button secondary" href="/providers">Start earning with your Mac</a>
             <a class="button" href="/developers">Run a batch workload</a>
-            <a class="button ghost" href="/developers#benchmark">Request benchmark</a>
+            <a class="button secondary" href="/providers">Start earning with your Mac</a>
           </div>
         </div>
 
@@ -56,6 +65,10 @@
             <a href="{{ link.href }}">{{ link.label }}</a>
           {% endfor %}
         </nav>
+      </div>
+      <div class="container footer-meta">
+        <span>&copy; Common Compute</span>
+        <span>All rights reserved</span>
       </div>
     </footer>
   </div>

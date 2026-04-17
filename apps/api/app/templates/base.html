@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Common Commute</title>
+  <meta name="theme-color" content="#10243b" />
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script>
+    window.COMMONCOMMUTE_API_BASE_URL = "{{ api_base_url }}";
+  </script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="container header-row">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-copy">
+            <strong>Common Commute</strong>
+            <span>Idle Macs. Useful compute.</span>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="/provider-dashboard">Provider</a>
+          <a href="/customer-dashboard">Customer</a>
+          <a href="/download">Download</a>
+          <a href="/docs">API docs</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="container section">
+  <div class="section-heading download-hero">
+    <span class="eyebrow subtle">Mac download</span>
+    <h1>Download Common Commute for Mac.</h1>
+    <p>The Common Commute Mac app is signed with Developer ID and notarized by Apple for direct distribution outside the Mac App Store. That helps Gatekeeper verify the app when users download and open it.</p>
+    <div class="hero-actions">
+      <a class="button" href="#release-notes">View release notes</a>
+      <a class="button secondary" href="/provider-dashboard">Go to provider workspace</a>
+    </div>
+  </div>
+
+  <div class="download-grid">
+    <article class="download-card">
+      <h2>After download</h2>
+      <ol class="steps-list">
+        <li>Open the app.</li>
+        <li>Sign in or create an account.</li>
+        <li>Choose your resource limits.</li>
+        <li>Start earning when your Mac is idle.</li>
+      </ol>
+    </article>
+
+    <article class="download-card" id="release-notes">
+      <h2>Release checklist</h2>
+      <ul class="subtle-list">
+        <li>Developer ID signed</li>
+        <li>Apple notarized</li>
+        <li>Stapled for simpler first launch</li>
+        <li>Hosted on your site or CDN</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="download-grid">
+    <article class="download-card">
+      <h2>What the page should say</h2>
+      <p>Signed and notarized. Safe to install. Clear about usage. Easy to pause. Fair to the provider.</p>
+    </article>
+
+    <article class="download-card">
+      <h2>Support copy</h2>
+      <p>Mac owners care about safety, thermal limits, and payout. Buyers care about cost, reliability, and verified work. The download page should answer both concerns directly.</p>
+    </article>
+  </div>
+</section>
+{% endblock %}

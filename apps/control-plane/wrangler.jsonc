@@ -1,0 +1,122 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "commoncompute-control-plane",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-02-14",
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "placement": {
+    "mode": "smart"
+  },
+  "vars": {
+    "APP_ENV": "dev",
+    "JWT_ISSUER": "commoncomputeai"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "SESSION_CACHE",
+      "id": "109ca74a50fa400ca1afdb7571a26142"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "commoncompute",
+      "database_id": "7fb82614-45ca-40aa-ac4f-3518e2cac924",
+      "migrations_dir": "../../infra/d1/migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "ARTIFACTS",
+      "bucket_name": "commoncompute-artifacts"
+    },
+    {
+      "binding": "EVIDENCE",
+      "bucket_name": "commoncompute-evidence"
+    }
+  ],
+  "queues": {
+    "producers": [
+      {
+        "binding": "JOB_EVENTS",
+        "queue": "job-events"
+      },
+      {
+        "binding": "PROVIDER_EVENTS",
+        "queue": "provider-events"
+      },
+      {
+        "binding": "BILLING_EVENTS",
+        "queue": "billing-events"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "job-events",
+        "max_batch_size": 20,
+        "max_batch_timeout": 5
+      },
+      {
+        "queue": "provider-events",
+        "max_batch_size": 20,
+        "max_batch_timeout": 5
+      },
+      {
+        "queue": "billing-events",
+        "max_batch_size": 20,
+        "max_batch_timeout": 5
+      }
+    ]
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MARKET_DO",
+        "class_name": "MarketDurableObject"
+      },
+      {
+        "name": "PROVIDER_DO",
+        "class_name": "ProviderDurableObject"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "MarketDurableObject",
+        "ProviderDurableObject"
+      ]
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "*/2 * * * *"
+    ]
+  },
+  "workflows": [
+    {
+      "name": "training-lifecycle",
+      "binding": "TRAINING_WORKFLOW",
+      "class_name": "TrainingLifecycleWorkflow"
+    }
+  ],
+  "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "commoncompute.ai",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.commoncompute.ai",
+      "custom_domain": true
+    },
+    {
+      "pattern": "api.commoncompute.ai",
+      "custom_domain": true
+    }
+  ]
+}

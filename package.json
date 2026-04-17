@@ -1,0 +1,25 @@
+{
+  "name": "commoncomputeai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Common Commute: a Mac-first distributed compute marketplace",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "python -m compileall apps/api/app",
+    "dev": "cd apps/api && python -m uvicorn app.main:app --reload",
+    "test": "python -m pytest tests/test_api.py",
+    "smoke:api": "node scripts/smoke-api.mjs",
+    "seed:demo": "python scripts/seed_demo.py",
+    "legacy:build": "npm run build --workspace @commoncompute/control-plane",
+    "legacy:dev": "npm run dev --workspace @commoncompute/control-plane",
+    "legacy:test": "npm run test --workspace @commoncompute/control-plane",
+    "legacy:lint": "npm run lint --workspace @commoncompute/control-plane",
+    "legacy:typecheck": "npm run typecheck --workspace @commoncompute/control-plane"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

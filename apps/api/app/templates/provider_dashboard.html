@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="container section">
+  <div class="section-heading">
+    <span class="eyebrow subtle">Provider workspace</span>
+    <h1>Your Mac already has spare compute. Common Commute helps it earn.</h1>
+    <p>Install the app, choose your limits, and get paid when your Mac completes verified jobs.</p>
+  </div>
+  <div class="metric-grid dashboard-summary">
+    <article class="metric">
+      <strong>Safety</strong>
+      <span>Choose when the app runs and keep control visible.</span>
+    </article>
+    <article class="metric">
+      <strong>Control</strong>
+      <span>Keep the Mac responsive with the limits you set.</span>
+    </article>
+    <article class="metric">
+      <strong>Fair payout</strong>
+      <span>Every verified task contributes to transparent earnings.</span>
+    </article>
+  </div>
+</section>
+
+<section class="container dashboard-layout">
+  <div class="stack">
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <span class="card-label">1. Provider access</span>
+          <h2>Get set up once.</h2>
+        </div>
+        <p class="panel-note">Register or log in, then reuse the same session for devices and tasks.</p>
+      </div>
+      <div class="panel-body form-grid two-up">
+        <form id="provider-register-form" class="form-card">
+          <h3>Register provider</h3>
+          <label>Full name <input name="full_name" placeholder="Full name" required /></label>
+          <label>Email <input name="email" type="email" placeholder="Email" required /></label>
+          <label>Password <input name="password" type="password" placeholder="Password" required /></label>
+          <button type="submit">Register</button>
+        </form>
+        <form id="provider-login-form" class="form-card">
+          <h3>Log in provider</h3>
+          <label>Email <input name="email" type="email" placeholder="Email" required /></label>
+          <label>Password <input name="password" type="password" placeholder="Password" required /></label>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <span class="card-label">2. Device enrollment</span>
+          <h2>Add a Mac to your account.</h2>
+        </div>
+        <p class="panel-note">The API stores capacity, class, and status for each enrolled device.</p>
+      </div>
+      <div class="panel-body">
+        <form id="device-form" class="form-card compact">
+          <div class="form-grid two-up">
+            <label>Device name <input name="name" placeholder="Device name" required /></label>
+            <label>GPU class <input name="gpu_class" placeholder="GPU class" required value="Apple Silicon" /></label>
+          </div>
+          <div class="form-grid two-up">
+            <label>CPU cores <input name="cpu_cores" type="number" placeholder="CPU cores" required value="8" /></label>
+            <label>Memory GB <input name="memory_gb" type="number" placeholder="Memory GB" required value="16" /></label>
+          </div>
+          <button type="submit">Create device</button>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <aside class="stack">
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <span class="card-label">3. Task runner</span>
+          <h2>Poll for work, then complete it.</h2>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="inline-actions">
+          <button id="poll-task-btn" type="button">Poll for task</button>
+          <button id="complete-task-btn" class="secondary" type="button">Complete current task</button>
+        </div>
+        <p class="panel-note">The browser output mirrors the backend state after each action.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <div>
+          <span class="card-label">Output</span>
+          <h2>Latest API response</h2>
+        </div>
+      </div>
+      <div class="panel-body">
+        <pre id="provider-output">No actions yet.</pre>
+      </div>
+    </section>
+  </aside>
+</section>
+
+<script src="/static/provider.js"></script>
+{% endblock %}

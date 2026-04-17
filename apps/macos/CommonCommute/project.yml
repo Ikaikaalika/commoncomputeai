@@ -1,0 +1,23 @@
+name: CommonCommute
+options:
+  minimumXcodeGenVersion: 2.38.0
+  deploymentTarget:
+    macOS: 14.0
+packages: {}
+targets:
+  CommonCommute:
+    type: application
+    platform: macOS
+    sources:
+      - CommonCommute
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.commoncommute.app
+      SWIFT_VERSION: 5.9
+      CODE_SIGN_STYLE: Automatic
+    info:
+      path: CommonCommute/Info.plist
+      properties:
+        CFBundleDisplayName: Common Commute
+        LSMinimumSystemVersion: 14.0
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true

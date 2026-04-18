@@ -9,15 +9,19 @@ targets:
     type: application
     platform: macOS
     sources:
-      - CommonCompute
+      - path: CommonCompute
+        excludes:
+          - "**/.DS_Store"
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: com.commoncompute.app
-      SWIFT_VERSION: 5.9
+      PRODUCT_BUNDLE_IDENTIFIER: ai.commoncompute.app
+      SWIFT_VERSION: 5.10
       CODE_SIGN_STYLE: Automatic
+      ENABLE_HARDENED_RUNTIME: YES
     info:
       path: CommonCompute/Info.plist
       properties:
         CFBundleDisplayName: Common Compute
-        LSMinimumSystemVersion: 14.0
+        LSMinimumSystemVersion: "14.0"
         NSAppTransportSecurity:
           NSAllowsArbitraryLoads: true
+        LSUIElement: true

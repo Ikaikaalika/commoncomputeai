@@ -1,3 +1,5 @@
+# DEPRECATED: Naive FIFO scheduler. Replaced by RouterShard Durable Objects in apps/router.
+# Kept as reference; will be deleted after smoke tests pass.
 from __future__ import annotations
 
 import json

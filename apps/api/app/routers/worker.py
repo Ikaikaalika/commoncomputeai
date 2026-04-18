@@ -1,3 +1,5 @@
+# DEPRECATED: Legacy provider polling endpoints. Replaced by /v1/providers/connect WebSocket in apps/api-v2.
+# Kept as reference; will be deleted after smoke tests pass.
 from __future__ import annotations
 
 from fastapi import APIRouter, Depends, HTTPException

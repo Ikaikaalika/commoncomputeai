@@ -3,6 +3,7 @@ import Foundation
 // DeviceState owns all runtime state: capability, telemetry, tasks, and connectivity.
 actor DeviceState {
     private(set) var capability: CapabilityProfile?
+    let runnerRegistry = RunnerRegistry()
     private(set) var telemetry: LiveTelemetry?
     private(set) var activeTasks: [String: TaskAssignment] = [:]
     private(set) var deviceId: String?
@@ -20,7 +21,7 @@ actor DeviceState {
     func start(apiKey: String, apiClient: APIClient) async {
         status = .enrolling
         statusError = nil
-        let profile = CapabilityProber.probe(advertisedRuntimes: [])
+        let profile = CapabilityProber.probe(advertisedRuntimes: RunnerRegistry.advertisedRuntimeIds(for: CapabilityProber.probe(advertisedRuntimes: [])))
         capability = profile
 
         do {

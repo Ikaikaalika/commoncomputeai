@@ -4,16 +4,26 @@
   "private": true,
   "description": "Common Compute: a Mac-first distributed compute marketplace",
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "packages/*"
   ],
   "scripts": {
-    "build": "python -m compileall apps/api/app",
-    "dev": "cd apps/api && python -m uvicorn app.main:app --reload",
-    "test": "python -m pytest tests/test_api.py",
-    "smoke:api": "node scripts/smoke-api.mjs",
+    "dev:api": "cd apps/api && python -m uvicorn app.main:app --reload",
+    "dev:router": "pnpm --filter @commoncompute/router dev",
+    "dev:api-v2": "pnpm --filter @commoncompute/api-v2 dev",
+    "dev:web": "pnpm --filter @commoncompute/web dev",
+    "deploy:router": "pnpm --filter @commoncompute/router deploy",
+    "deploy:api": "pnpm --filter @commoncompute/api-v2 deploy",
+    "deploy:web": "pnpm --filter @commoncompute/web deploy",
+    "smoke": "tsx tests/smoke/index.ts",
+    "smoke:legacy": "node scripts/smoke-api.mjs",
     "seed:demo": "python scripts/seed_demo.py",
-    "web:build": "npm run build --workspace @commoncompute/web",
-    "web:deploy": "npm run deploy --workspace @commoncompute/web"
+    "type-check": "pnpm --filter @commoncompute/router type-check && pnpm --filter @commoncompute/api-v2 type-check"
+  },
+  "devDependencies": {
+    "openai": "^4.67.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
   },
   "engines": {
     "node": ">=22.0.0"

@@ -1,0 +1,369 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0EAC38A2143A01B0BF1707E1 /* VideoToolboxRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C652749A514B61B76B8A74 /* VideoToolboxRunner.swift */; };
+		1C9BC522709A544FB2A5D628 /* CapabilityProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0522BEC25F8DB82939D0306B /* CapabilityProfile.swift */; };
+		23583C7278B3B3D332F23DD8 /* MLXInferenceRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2153F24A6D9700120B9943B /* MLXInferenceRunner.swift */; };
+		2395E475B221896132ADF97E /* CoreMLVisionRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8A15606F70A314B6BF0262 /* CoreMLVisionRunner.swift */; };
+		23D92972D73B47AB3E7ABA24 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D60821DBFE172361B21D7A /* APIClient.swift */; };
+		567B4791F45EDF967203ACAC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABFF82E812CE42AEBA0C5E6 /* Models.swift */; };
+		6E6CC5A30CFB867C7FBCD825 /* WorkloadRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11F17249C479B90BB77FC9C /* WorkloadRunner.swift */; };
+		701BFC20F0742469684E430A /* LiveTelemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B02B9AE509670F367745B1 /* LiveTelemetry.swift */; };
+		89B00511542B6EC1ED541C19 /* Heartbeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3411E1033F31E79A8DA54674 /* Heartbeat.swift */; };
+		8F411F67C8E50522BC313E6F /* RunnerRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582A746A5416AC999A4F144 /* RunnerRegistry.swift */; };
+		A57CABB355667CD0A6CA30C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E89EBC0CB62CFD1E06A13A /* ContentView.swift */; };
+		ACCA3949CC31C2C71CFE9709 /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E95D5714E38BA392BC1320 /* AppViewModel.swift */; };
+		B231E0E216E07B9B0D907D8C /* CommonCommuteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE13B1E95FCA5FA068792042 /* CommonCommuteApp.swift */; };
+		D37C20EBBE77EB956A574929 /* WhisperANERunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E5163DF91B4E89F32A970 /* WhisperANERunner.swift */; };
+		DEB070BFCB892C7F31D5700E /* MLXImageRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F84996A3D07119244D4A69D /* MLXImageRunner.swift */; };
+		E8A82F65A3375C418C6D38A3 /* CoreMLEmbeddingRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4521CFB3A6D73ACE573FCB /* CoreMLEmbeddingRunner.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0522BEC25F8DB82939D0306B /* CapabilityProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapabilityProfile.swift; sourceTree = "<group>"; };
+		1F84996A3D07119244D4A69D /* MLXImageRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLXImageRunner.swift; sourceTree = "<group>"; };
+		2ECA5C722FD0DF24614CB66A /* CommonCompute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommonCompute.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3411E1033F31E79A8DA54674 /* Heartbeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heartbeat.swift; sourceTree = "<group>"; };
+		55B02B9AE509670F367745B1 /* LiveTelemetry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTelemetry.swift; sourceTree = "<group>"; };
+		5F4521CFB3A6D73ACE573FCB /* CoreMLEmbeddingRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLEmbeddingRunner.swift; sourceTree = "<group>"; };
+		65D60821DBFE172361B21D7A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		6ABA3AC7F1BE82985A924AFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7E8A15606F70A314B6BF0262 /* CoreMLVisionRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLVisionRunner.swift; sourceTree = "<group>"; };
+		84E89EBC0CB62CFD1E06A13A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8ABFF82E812CE42AEBA0C5E6 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		91E95D5714E38BA392BC1320 /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		9582A746A5416AC999A4F144 /* RunnerRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerRegistry.swift; sourceTree = "<group>"; };
+		AB7E5163DF91B4E89F32A970 /* WhisperANERunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperANERunner.swift; sourceTree = "<group>"; };
+		BE13B1E95FCA5FA068792042 /* CommonCommuteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCommuteApp.swift; sourceTree = "<group>"; };
+		C2153F24A6D9700120B9943B /* MLXInferenceRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLXInferenceRunner.swift; sourceTree = "<group>"; };
+		C7C652749A514B61B76B8A74 /* VideoToolboxRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoToolboxRunner.swift; sourceTree = "<group>"; };
+		D3494B72783B70F97C11BF7D /* CommonCompute.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommonCompute.entitlements; sourceTree = "<group>"; };
+		F11F17249C479B90BB77FC9C /* WorkloadRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkloadRunner.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		02DDECA85731B95FF97F0784 /* Runners */ = {
+			isa = PBXGroup;
+			children = (
+				5F4521CFB3A6D73ACE573FCB /* CoreMLEmbeddingRunner.swift */,
+				7E8A15606F70A314B6BF0262 /* CoreMLVisionRunner.swift */,
+				1F84996A3D07119244D4A69D /* MLXImageRunner.swift */,
+				C2153F24A6D9700120B9943B /* MLXInferenceRunner.swift */,
+				9582A746A5416AC999A4F144 /* RunnerRegistry.swift */,
+				C7C652749A514B61B76B8A74 /* VideoToolboxRunner.swift */,
+				AB7E5163DF91B4E89F32A970 /* WhisperANERunner.swift */,
+				F11F17249C479B90BB77FC9C /* WorkloadRunner.swift */,
+			);
+			path = Runners;
+			sourceTree = "<group>";
+		};
+		19C55075C250E95919B5B476 /* Capability */ = {
+			isa = PBXGroup;
+			children = (
+				0522BEC25F8DB82939D0306B /* CapabilityProfile.swift */,
+				3411E1033F31E79A8DA54674 /* Heartbeat.swift */,
+				55B02B9AE509670F367745B1 /* LiveTelemetry.swift */,
+			);
+			path = Capability;
+			sourceTree = "<group>";
+		};
+		8C83855822A315456061EF0C = {
+			isa = PBXGroup;
+			children = (
+				B4B663B0BB7F8D816A84F0FC /* CommonCompute */,
+				E7ACC6A06324DCFC29B40009 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B4B663B0BB7F8D816A84F0FC /* CommonCompute */ = {
+			isa = PBXGroup;
+			children = (
+				65D60821DBFE172361B21D7A /* APIClient.swift */,
+				91E95D5714E38BA392BC1320 /* AppViewModel.swift */,
+				BE13B1E95FCA5FA068792042 /* CommonCommuteApp.swift */,
+				D3494B72783B70F97C11BF7D /* CommonCompute.entitlements */,
+				84E89EBC0CB62CFD1E06A13A /* ContentView.swift */,
+				6ABA3AC7F1BE82985A924AFE /* Info.plist */,
+				8ABFF82E812CE42AEBA0C5E6 /* Models.swift */,
+				19C55075C250E95919B5B476 /* Capability */,
+				02DDECA85731B95FF97F0784 /* Runners */,
+			);
+			path = CommonCompute;
+			sourceTree = "<group>";
+		};
+		E7ACC6A06324DCFC29B40009 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2ECA5C722FD0DF24614CB66A /* CommonCompute.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0D08FDB4CD1B5B5EE0EBC3AA /* CommonCompute */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7599ECEBA426FA81B77ECADA /* Build configuration list for PBXNativeTarget "CommonCompute" */;
+			buildPhases = (
+				CD9BA861C02880E4EB9F7C3B /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CommonCompute;
+			packageProductDependencies = (
+			);
+			productName = CommonCompute;
+			productReference = 2ECA5C722FD0DF24614CB66A /* CommonCompute.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		62D11C739B77F76E0CBAE471 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					0D08FDB4CD1B5B5EE0EBC3AA = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1EED312A618A117CE62BFE0A /* Build configuration list for PBXProject "CommonCompute" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 8C83855822A315456061EF0C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E7ACC6A06324DCFC29B40009 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0D08FDB4CD1B5B5EE0EBC3AA /* CommonCompute */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD9BA861C02880E4EB9F7C3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23D92972D73B47AB3E7ABA24 /* APIClient.swift in Sources */,
+				ACCA3949CC31C2C71CFE9709 /* AppViewModel.swift in Sources */,
+				1C9BC522709A544FB2A5D628 /* CapabilityProfile.swift in Sources */,
+				B231E0E216E07B9B0D907D8C /* CommonCommuteApp.swift in Sources */,
+				A57CABB355667CD0A6CA30C7 /* ContentView.swift in Sources */,
+				E8A82F65A3375C418C6D38A3 /* CoreMLEmbeddingRunner.swift in Sources */,
+				2395E475B221896132ADF97E /* CoreMLVisionRunner.swift in Sources */,
+				89B00511542B6EC1ED541C19 /* Heartbeat.swift in Sources */,
+				701BFC20F0742469684E430A /* LiveTelemetry.swift in Sources */,
+				DEB070BFCB892C7F31D5700E /* MLXImageRunner.swift in Sources */,
+				23583C7278B3B3D332F23DD8 /* MLXInferenceRunner.swift in Sources */,
+				567B4791F45EDF967203ACAC /* Models.swift in Sources */,
+				8F411F67C8E50522BC313E6F /* RunnerRegistry.swift in Sources */,
+				0EAC38A2143A01B0BF1707E1 /* VideoToolboxRunner.swift in Sources */,
+				D37C20EBBE77EB956A574929 /* WhisperANERunner.swift in Sources */,
+				6E6CC5A30CFB867C7FBCD825 /* WorkloadRunner.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5E7C782BABB7D3BECFC407C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CommonCompute/CommonCompute.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = CommonCompute/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.commoncompute.app;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.1;
+			};
+			name = Debug;
+		};
+		70D589C7599180B0CAAD8AC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CommonCompute/CommonCompute.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = CommonCompute/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.commoncompute.app;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.1;
+			};
+			name = Release;
+		};
+		970C0C674A8FFFCFF5EF41B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		E6F957FB62A6F037DB85AEC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1EED312A618A117CE62BFE0A /* Build configuration list for PBXProject "CommonCompute" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6F957FB62A6F037DB85AEC7 /* Debug */,
+				970C0C674A8FFFCFF5EF41B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7599ECEBA426FA81B77ECADA /* Build configuration list for PBXNativeTarget "CommonCompute" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E7C782BABB7D3BECFC407C3 /* Debug */,
+				70D589C7599180B0CAAD8AC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 62D11C739B77F76E0CBAE471 /* Project object */;
+}

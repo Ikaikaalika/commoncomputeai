@@ -32,6 +32,14 @@ actor Heartbeat {
         self.telemetrySampler = telemetrySampler
     }
 
+    func setCallbacks(
+        onAssigned: @escaping (TaskAssignment) -> Void,
+        onCancelled: @escaping (String) -> Void
+    ) {
+        self.onTaskAssigned = onAssigned
+        self.onTaskCancelled = onCancelled
+    }
+
     // MARK: - Connect
 
     func connect() async {
@@ -124,17 +132,22 @@ actor Heartbeat {
 
     private func handleMessage(_ text: String) {
         guard let data = text.data(using: .utf8),
-              let envelope = try? JSONDecoder().decode(WSMessage.self, from: data)
+              let envelope = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let type = envelope["type"] as? String
         else { return }
 
-        switch envelope.type {
+        let payload = envelope["payload"] as? [String: Any]
+
+        switch type {
         case "assign":
-            if let assignment = try? JSONDecoder().decode(TaskAssignment.self, from: JSONSerialization.data(withJSONObject: envelope.payload ?? [:], options: [])) {
+            if let payloadDict = payload,
+               let assignData = try? JSONSerialization.data(withJSONObject: payloadDict),
+               let assignment = try? JSONDecoder().decode(TaskAssignment.self, from: assignData) {
                 activeTaskIds.append(assignment.id)
                 onTaskAssigned?(assignment)
             }
         case "cancel":
-            if let taskId = (envelope.payload?["task_id"] as? String) {
+            if let taskId = payload?["task_id"] as? String {
                 onTaskCancelled?(taskId)
             }
         default:
@@ -158,11 +171,6 @@ actor Heartbeat {
         else { return [:] }
         return obj
     }
-}
-
-private struct WSMessage: Codable {
-    let type: String
-    let payload: [String: AnyCodable]?
 }
 
 // MARK: - Long-poll fallback

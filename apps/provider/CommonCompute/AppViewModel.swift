@@ -40,12 +40,14 @@ actor DeviceState {
                 capability: profile,
                 telemetrySampler: telemetrySampler
             )
-            await hb.onTaskAssigned = { [weak self] assignment in
-                Task { await self?.taskAssigned(assignment) }
-            }
-            await hb.onTaskCancelled = { [weak self] taskId in
-                Task { await self?.taskCancelled(taskId) }
-            }
+            await hb.setCallbacks(
+                onAssigned: { [weak self] assignment in
+                    Task { await self?.taskAssigned(assignment) }
+                },
+                onCancelled: { [weak self] taskId in
+                    Task { await self?.taskCancelled(taskId) }
+                }
+            )
             heartbeat = hb
             status = .connected
 

@@ -17,6 +17,7 @@ targets:
       SWIFT_VERSION: 5.10
       CODE_SIGN_STYLE: Automatic
       ENABLE_HARDENED_RUNTIME: YES
+      CODE_SIGN_ENTITLEMENTS: CommonCompute/CommonCompute.entitlements
     info:
       path: CommonCompute/Info.plist
       properties:

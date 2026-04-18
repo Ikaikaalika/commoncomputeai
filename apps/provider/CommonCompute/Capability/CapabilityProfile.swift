@@ -128,27 +128,16 @@ struct CapabilityProber {
             (kCMVideoCodecType_HEVC, "hevc"),
             (kCMVideoCodecType_AppleProRes422, "prores"),
             (kCMVideoCodecType_VP9, "vp9"),
-            (.init(rawValue: kCMVideoCodecType_AV1), "av1")
+            (kCMVideoCodecType_AV1, "av1")
         ]
 
         for (codec, name) in codecMap {
             if VTIsHardwareDecodeSupported(codec) { decoders.append(name) }
         }
 
-        // Encoder support: check if hardware encoder sessions can be created.
-        for (codec, name) in [(kCMVideoCodecType_H264, "h264"), (kCMVideoCodecType_HEVC, "hevc")] {
-            if let props = VTCopySupportedPropertyDictionaryForEncoder(
-                width: 1920, height: 1080, codecType: codec,
-                encoderSpecification: nil, outEncoderName: nil
-            ) {
-                _ = props
-                encoders.append(name)
-            }
-        }
-
-        // ProRes encoder: always available on Apple Silicon (M-series).
+        // All Apple Silicon Macs have hardware H.264, HEVC, and ProRes encoders.
         #if arch(arm64)
-        if !encoders.contains("prores") { encoders.append("prores") }
+        encoders = ["h264", "hevc", "prores"]
         #endif
 
         return MediaCapabilities(encoders: encoders, decoders: decoders, engines: variant.mediaEngines)
@@ -223,17 +212,4 @@ enum ChipVariantTable {
     }
 
     private static let unknown = ChipVariant(name: "Unknown", gpuCores: 0, aneGeneration: 0, aneTOPS: 0, mediaEngines: 0)
-}
-
-// VTCopySupportedPropertyDictionaryForEncoder shim — the Swift-bridged name varies by SDK.
-private func VTCopySupportedPropertyDictionaryForEncoder(
-    width: Int32, height: Int32, codecType: CMVideoCodecType,
-    encoderSpecification: CFDictionary?, outEncoderName: UnsafeMutablePointer<CFString?>?
-) -> CFDictionary? {
-    var dict: CFDictionary?
-    let status = VTCopySupportedPropertyDictionaryForEncoder(
-        width, height, codecType, encoderSpecification, outEncoderName, &dict
-    )
-    guard status == noErr else { return nil }
-    return dict
 }

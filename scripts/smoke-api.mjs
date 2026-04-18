@@ -43,7 +43,7 @@ async function main() {
   console.log(`Using API base: ${apiBase}`);
 
   const landing = await fetchText("/");
-  if (!landing.includes("Common Commute")) {
+  if (!landing.includes("Common Compute")) {
     throw new Error("Landing page did not render expected brand");
   }
 

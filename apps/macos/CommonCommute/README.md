@@ -1,4 +1,4 @@
-# Common Commute macOS app
+# Common Compute macOS app
 
 This folder contains a native SwiftUI shell for the provider-side worker app.
 
@@ -8,9 +8,9 @@ This repo uses XcodeGen to keep the project source-controlled as text.
 
 ```bash
 brew install xcodegen
-cd apps/macos/CommonCommute
+cd apps/macos/CommonCompute
 xcodegen generate
-open CommonCommute.xcodeproj
+open CommonCompute.xcodeproj
 ```
 
 ## Current features

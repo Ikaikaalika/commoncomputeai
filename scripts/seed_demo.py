@@ -1,4 +1,4 @@
-"""Seed a tiny local demo dataset for Common Commute."""
+"""Seed a tiny local demo dataset for Common Compute."""
 
 from pathlib import Path
 import sys

@@ -33,7 +33,3 @@ API_BASE=http://127.0.0.1:8000 node scripts/smoke-api.mjs
 - Cloudflare handles DNS, CDN, and edge delivery.
 - AWS hosts the FastAPI backend, queue workers, database, and artifact storage.
 - `API_BASE_URL` should be set on the rendered site if the API is on a different origin.
-
-## Legacy Control Plane
-
-The Cloudflare Worker stack remains in `apps/control-plane` but is no longer the main path. If you need it, use the `legacy:*` scripts from the repo root.

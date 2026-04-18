@@ -1,6 +1,6 @@
 # AWS starter architecture
 
-This is a lightweight starting point for a cost-aware Common Commute deployment.
+This is a lightweight starting point for a cost-aware Common Compute deployment.
 
 ## Recommended first deployment
 - Cloudflare: DNS, CDN, WAF, static downloads

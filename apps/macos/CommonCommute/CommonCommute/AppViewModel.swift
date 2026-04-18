@@ -9,7 +9,7 @@ final class AppViewModel: ObservableObject {
     @Published var cpuCores = max(ProcessInfo.processInfo.processorCount, 4)
     @Published var memoryGB = 16
     @Published var gpuClass = "Apple Silicon"
-    @Published var output = "Welcome to Common Commute"
+    @Published var output = "Welcome to Common Compute"
     @Published var token = ""
     @Published var deviceID: Int?
     @Published var currentTask: TaskPayload?

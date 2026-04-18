@@ -10,7 +10,7 @@ struct ContentView: View {
                 Text("Task Runner")
                 Text("Earnings")
             }
-            .navigationTitle("Common Commute")
+            .navigationTitle("Common Compute")
         } detail: {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {

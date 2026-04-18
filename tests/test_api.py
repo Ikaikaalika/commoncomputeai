@@ -20,7 +20,7 @@ def register_user(client: TestClient, role: str, email: str, full_name: str) -> 
 
 def test_public_pages_render(tmp_path, monkeypatch):
     monkeypatch.setenv("DATABASE_PATH", str(tmp_path / "test.db"))
-    monkeypatch.setenv("API_BASE_URL", "https://api.commoncommute.ai")
+    monkeypatch.setenv("API_BASE_URL", "https://api.commoncompute.ai")
     init_db()
     client = TestClient(app)
 
@@ -35,9 +35,9 @@ def test_public_pages_render(tmp_path, monkeypatch):
     legacy_customer = client.get("/customer-dashboard", follow_redirects=False)
 
     assert landing.status_code == 200
-    assert "Common Commute" in landing.text
+    assert "Common Compute" in landing.text
     assert "Affordable AI compute powered by idle Macs." in landing.text
-    assert 'window.COMMONCOMMUTE_API_BASE_URL = "https://api.commoncommute.ai";' in landing.text
+    assert 'window.COMMONCOMMUTE_API_BASE_URL = "https://api.commoncompute.ai";' in landing.text
     assert "Run a workload" in landing.text
     assert "Earn with your Mac" in landing.text
     assert "Is this crypto mining?" in landing.text
@@ -57,7 +57,7 @@ def test_public_pages_render(tmp_path, monkeypatch):
     assert "Security and verification built into every job." in security.text
 
     assert download.status_code == 200
-    assert "Download Common Commute for Mac." in download.text
+    assert "Download Common Compute for Mac." in download.text
     assert "macOS Ventura or newer" in download.text
 
     assert docs.status_code == 200

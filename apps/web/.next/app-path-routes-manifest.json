@@ -1,0 +1,17 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/blog/page": "/blog",
+  "/docs/page": "/docs",
+  "/privacy/page": "/privacy",
+  "/about/page": "/about",
+  "/developers/page": "/developers",
+  "/pricing/page": "/pricing",
+  "/support/page": "/support",
+  "/status/page": "/status",
+  "/terms/page": "/terms",
+  "/providers/page": "/providers",
+  "/download/page": "/download",
+  "/page": "/",
+  "/security/page": "/security",
+  "/careers/page": "/careers"
+}

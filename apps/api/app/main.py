@@ -26,7 +26,7 @@ for router in (pages.router, auth.router, providers.router, customers.router, wo
     if not hasattr(router, "on_shutdown"):
         router.on_shutdown = []
 
-app = FastAPI(title="Common Commute API", version="0.1.0", docs_url="/api-docs", redoc_url=None)
+app = FastAPI(title="Common Compute API", version="0.1.0", docs_url="/api-docs", redoc_url=None)
 
 APP_DIR = Path(__file__).resolve().parent
 app.mount("/static", StaticFiles(directory=str(APP_DIR / "static")), name="static")

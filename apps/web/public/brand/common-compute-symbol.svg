@@ -1,0 +1,37 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="silverStroke" x1="96" y1="28" x2="224" y2="232" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#D5DCE4"/>
+      <stop offset="0.52" stop-color="#AEB5BE"/>
+      <stop offset="1" stop-color="#868E97"/>
+    </linearGradient>
+    <linearGradient id="silverBack" x1="108" y1="86" x2="212" y2="230" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6F7782"/>
+      <stop offset="1" stop-color="#3F4650"/>
+    </linearGradient>
+    <linearGradient id="nodeFill" x1="112" y1="38" x2="214" y2="190" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#DBF0FF"/>
+      <stop offset="1" stop-color="#8EC9F8"/>
+    </linearGradient>
+    <filter id="softGlow" x="44" y="0" width="232" height="282" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#8CC8FF" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <g filter="url(#softGlow)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M160 32L232 64L160 96L88 64L160 32Z" stroke="url(#silverStroke)" stroke-width="8"/>
+    <path d="M160 98L232 130L160 162L88 130L160 98Z" stroke="url(#silverStroke)" stroke-width="8" opacity="0.8"/>
+    <path d="M160 164L232 196L160 228L88 196L160 164Z" stroke="url(#silverBack)" stroke-width="8" opacity="0.92"/>
+    <path d="M160 32V196" stroke="url(#silverStroke)" stroke-width="8" opacity="0.92"/>
+    <path d="M110 54V144" stroke="url(#silverStroke)" stroke-width="8" opacity="0.78"/>
+    <path d="M204 66V148" stroke="url(#silverStroke)" stroke-width="8" opacity="0.78"/>
+    <path d="M110 54L160 96L204 66" stroke="url(#silverStroke)" stroke-width="8"/>
+    <path d="M110 144L160 96L222 148" stroke="url(#silverStroke)" stroke-width="8"/>
+    <circle cx="160" cy="32" r="14" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+    <circle cx="110" cy="54" r="14" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+    <circle cx="204" cy="66" r="14" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+    <circle cx="160" cy="96" r="14" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+    <circle cx="110" cy="144" r="14" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+    <circle cx="222" cy="148" r="14" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+    <circle cx="160" cy="196" r="14" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+  </g>
+</svg>

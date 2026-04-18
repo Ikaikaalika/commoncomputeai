@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct CommonCommuteApp: App {
+struct CommonComputeApp: App {
     @StateObject private var viewModel = AppViewModel()
 
     var body: some Scene {

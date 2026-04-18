@@ -1,0 +1,43 @@
+<svg width="720" height="400" viewBox="0 0 720 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="silverStroke" x1="244" y1="40" x2="476" y2="252" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#D5DCE4"/>
+      <stop offset="0.52" stop-color="#AEB5BE"/>
+      <stop offset="1" stop-color="#868E97"/>
+    </linearGradient>
+    <linearGradient id="silverBack" x1="260" y1="94" x2="450" y2="242" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6F7782"/>
+      <stop offset="1" stop-color="#3F4650"/>
+    </linearGradient>
+    <linearGradient id="nodeFill" x1="268" y1="42" x2="450" y2="214" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#DBF0FF"/>
+      <stop offset="1" stop-color="#8EC9F8"/>
+    </linearGradient>
+    <linearGradient id="wordmarkFill" x1="188" y1="244" x2="536" y2="316" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#D6DCE4"/>
+      <stop offset="0.5" stop-color="#B7BEC7"/>
+      <stop offset="1" stop-color="#979EA7"/>
+    </linearGradient>
+    <filter id="softGlow" x="154" y="0" width="412" height="286" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="9" flood-color="#8CC8FF" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <g filter="url(#softGlow)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M360 32L476 82L360 132L244 82L360 32Z" stroke="url(#silverStroke)" stroke-width="8"/>
+    <path d="M360 102L476 152L360 202L244 152L360 102Z" stroke="url(#silverStroke)" stroke-width="8" opacity="0.8"/>
+    <path d="M360 172L476 222L360 272L244 222L360 172Z" stroke="url(#silverBack)" stroke-width="8" opacity="0.92"/>
+    <path d="M360 32V238" stroke="url(#silverStroke)" stroke-width="8" opacity="0.92"/>
+    <path d="M278 64V170" stroke="url(#silverStroke)" stroke-width="8" opacity="0.78"/>
+    <path d="M430 82V176" stroke="url(#silverStroke)" stroke-width="8" opacity="0.78"/>
+    <path d="M278 64L360 132L430 82" stroke="url(#silverStroke)" stroke-width="8"/>
+    <path d="M278 170L360 132L464 176" stroke="url(#silverStroke)" stroke-width="8"/>
+    <circle cx="360" cy="32" r="15" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+    <circle cx="278" cy="64" r="15" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+    <circle cx="430" cy="82" r="15" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+    <circle cx="360" cy="132" r="15" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+    <circle cx="278" cy="170" r="15" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+    <circle cx="464" cy="176" r="15" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+    <circle cx="360" cy="238" r="15" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.72" stroke-width="2"/>
+  </g>
+  <text x="360" y="346" text-anchor="middle" fill="url(#wordmarkFill)" font-family="Inter, SF Pro Display, Segoe UI, Arial, sans-serif" font-size="50" font-weight="500" letter-spacing="-2">Common Compute</text>
+</svg>

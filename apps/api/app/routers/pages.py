@@ -66,7 +66,7 @@ def landing(request: Request):
         "index.html",
         **page_context(
             request,
-            page_title="Common Commute | Affordable AI compute powered by idle Macs",
+            page_title="Common Compute | Affordable AI compute powered by idle Macs",
             page_description="Run verified batch AI workloads for less or earn from the Apple Silicon you already own.",
             active_page="home",
             page_path="/",
@@ -80,7 +80,7 @@ def providers_page(request: Request):
         "providers.html",
         **page_context(
             request,
-            page_title="For Mac Owners | Common Commute",
+            page_title="For Mac Owners | Common Compute",
             page_description="Put your Mac's idle time to work on your schedule and earn when verified jobs complete.",
             active_page="providers",
             page_path="/providers",
@@ -94,7 +94,7 @@ def developers_page(request: Request):
         "developers.html",
         **page_context(
             request,
-            page_title="For Developers | Common Commute",
+            page_title="For Developers | Common Compute",
             page_description="Run batch inference and preprocessing workloads at lower cost through the dashboard or API.",
             active_page="developers",
             page_path="/developers",
@@ -108,7 +108,7 @@ def pricing_page(request: Request):
         "pricing.html",
         **page_context(
             request,
-            page_title="Pricing | Common Commute",
+            page_title="Pricing | Common Compute",
             page_description="Pay for completed work, not idle infrastructure.",
             active_page="pricing",
             page_path="/pricing",
@@ -122,7 +122,7 @@ def security_page(request: Request):
         "security.html",
         **page_context(
             request,
-            page_title="Security | Common Commute",
+            page_title="Security | Common Compute",
             page_description="Security and verification built into every job.",
             active_page="security",
             page_path="/security",
@@ -136,8 +136,8 @@ def download(request: Request):
         "download.html",
         **page_context(
             request,
-            page_title="Download | Common Commute",
-            page_description="Download Common Commute for Mac.",
+            page_title="Download | Common Compute",
+            page_description="Download Common Compute for Mac.",
             active_page="download",
             page_path="/download",
         ),
@@ -150,7 +150,7 @@ def docs_page(request: Request):
         "docs.html",
         **page_context(
             request,
-            page_title="Docs | Common Commute",
+            page_title="Docs | Common Compute",
             page_description="Getting started, provider setup, developer API, verification, scheduling, earnings, and security.",
             active_page="docs",
             page_path="/docs",
@@ -164,12 +164,12 @@ def about_page(request: Request):
         "content_page.html",
         **page_context(
             request,
-            page_title="About | Common Commute",
-            page_description="Common Commute is building a trusted distributed compute network powered by idle Macs.",
+            page_title="About | Common Compute",
+            page_description="Common Compute is building a trusted distributed compute network powered by idle Macs.",
             active_page="about",
             page_path="/about",
             eyebrow="About",
-            headline="Common Commute is building a trusted distributed compute network powered by idle Macs.",
+            headline="Common Compute is building a trusted distributed compute network powered by idle Macs.",
             lead="The product is designed for affordable batch AI workloads, fair provider payouts, and clear execution controls.",
             cta_primary={"label": "Download", "href": "/download"},
             cta_secondary={"label": "For developers", "href": "/developers"},
@@ -188,7 +188,7 @@ def blog_page(request: Request):
         "content_page.html",
         **page_context(
             request,
-            page_title="Blog | Common Commute",
+            page_title="Blog | Common Compute",
             page_description="Product notes, release updates, and launch documentation.",
             active_page="blog",
             page_path="/blog",
@@ -212,7 +212,7 @@ def status_page(request: Request):
         "content_page.html",
         **page_context(
             request,
-            page_title="Status | Common Commute",
+            page_title="Status | Common Compute",
             page_description="Operational status and system notes.",
             active_page="status",
             page_path="/status",
@@ -236,8 +236,8 @@ def privacy_page(request: Request):
         "content_page.html",
         **page_context(
             request,
-            page_title="Privacy | Common Commute",
-            page_description="Privacy principles for the Common Commute marketplace.",
+            page_title="Privacy | Common Compute",
+            page_description="Privacy principles for the Common Compute marketplace.",
             active_page="privacy",
             page_path="/privacy",
             eyebrow="Privacy",
@@ -260,7 +260,7 @@ def terms_page(request: Request):
         "content_page.html",
         **page_context(
             request,
-            page_title="Terms | Common Commute",
+            page_title="Terms | Common Compute",
             page_description="Marketplace terms and service rules.",
             active_page="terms",
             page_path="/terms",
@@ -284,7 +284,7 @@ def support_page(request: Request):
         "content_page.html",
         **page_context(
             request,
-            page_title="Support | Common Commute",
+            page_title="Support | Common Compute",
             page_description="Support options for providers and developers.",
             active_page="support",
             page_path="/support",
@@ -294,7 +294,7 @@ def support_page(request: Request):
             cta_primary={"label": "Read docs", "href": "/docs"},
             cta_secondary={"label": "Download", "href": "/download"},
             cards=[
-                {"title": "Email", "body": "support@commoncommute.ai"},
+                {"title": "Email", "body": "support@commoncompute.ai"},
                 {"title": "Onboarding", "body": "Follow the provider setup and developer API docs first."},
                 {"title": "FAQ", "body": "Most launch questions should be answered on the download and security pages."},
             ],
@@ -308,7 +308,7 @@ def careers_page(request: Request):
         "content_page.html",
         **page_context(
             request,
-            page_title="Careers | Common Commute",
+            page_title="Careers | Common Compute",
             page_description="Careers later.",
             active_page="careers",
             page_path="/careers",

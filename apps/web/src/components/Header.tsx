@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -28,7 +29,14 @@ export default function Header() {
       <header className="site-header">
         <div className="container header-row">
           <Link href="/" className="brand" aria-label="Common Compute home">
-            <div className="brand-mark" aria-hidden="true" />
+            <Image
+              src="/brand/common-compute-layered-mark.svg"
+              alt=""
+              aria-hidden="true"
+              className="brand-mark"
+              width={32}
+              height={32}
+            />
             <div className="brand-copy">
               <strong>Common Compute</strong>
               <span>idle macs · useful compute</span>

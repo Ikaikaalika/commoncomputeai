@@ -143,9 +143,9 @@ a {
 .brand-mark {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--accent) 0%, #6aa8e8 60%, var(--accent-tertiary) 100%);
-  box-shadow: 0 0 20px rgba(140, 200, 255, 0.35);
+  display: block;
+  flex: none;
+  filter: drop-shadow(0 0 14px rgba(140, 200, 255, 0.18));
 }
 
 .brand-copy {

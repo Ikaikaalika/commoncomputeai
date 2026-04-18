@@ -1,8 +1,8 @@
-# Common Commute Brand Direction
+# Common Compute Brand Direction
 
 ## Core positioning
 
-Common Commute turns idle Macs into a verified compute network for affordable AI workloads.
+Common Compute turns idle Macs into a verified compute network for affordable AI workloads.
 
 ### Short version
 
@@ -79,7 +79,7 @@ Built for embeddings, transcription, OCR, and large batch jobs that do not need 
 
 Earn from your idle Mac.
 
-Common Commute runs only within the limits you choose. Set schedules, pause anytime, and keep control of your machine.
+Common Compute runs only within the limits you choose. Set schedules, pause anytime, and keep control of your machine.
 
 ### Customer section
 
@@ -87,11 +87,11 @@ Lower-cost batch AI workloads.
 
 Submit jobs through the dashboard or API and get verified results without paying premium cloud prices for every workload.
 
-### Why Common Commute
+### Why Common Compute
 
 Cheaper than premium cloud for the right workloads.
 
-Common Commute is designed for batch jobs, not ultra-low-latency interactive inference.
+Common Compute is designed for batch jobs, not ultra-low-latency interactive inference.
 
 ### How it works
 
@@ -104,17 +104,17 @@ Common Commute is designed for batch jobs, not ultra-low-latency interactive inf
 
 Use spare compute better.
 
-Whether you want to lower AI processing costs or earn from idle hardware, Common Commute gives both sides a fairer option.
+Whether you want to lower AI processing costs or earn from idle hardware, Common Compute gives both sides a fairer option.
 
 ## Download page copy
 
 ### Recommended headline
 
-Download Common Commute for Mac
+Download Common Compute for Mac
 
 ### Recommended trust copy
 
-The Common Commute Mac app is signed with Developer ID and notarized by Apple for direct distribution outside the Mac App Store. That helps Gatekeeper verify the app when users download and open it.
+The Common Compute Mac app is signed with Developer ID and notarized by Apple for direct distribution outside the Mac App Store. That helps Gatekeeper verify the app when users download and open it.
 
 ### Recommended helper text
 

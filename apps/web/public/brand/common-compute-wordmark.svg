@@ -1,0 +1,10 @@
+<svg width="720" height="160" viewBox="0 0 720 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wordmarkFill" x1="118" y1="44" x2="600" y2="144" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#D6DCE4"/>
+      <stop offset="0.5" stop-color="#B7BEC7"/>
+      <stop offset="1" stop-color="#979EA7"/>
+    </linearGradient>
+  </defs>
+  <text x="360" y="106" text-anchor="middle" fill="url(#wordmarkFill)" font-family="Inter, SF Pro Display, Segoe UI, Arial, sans-serif" font-size="64" font-weight="500" letter-spacing="-2.4">Common Compute</text>
+</svg>

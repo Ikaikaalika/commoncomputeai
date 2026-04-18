@@ -7,7 +7,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 def get_db_path() -> Path:
-    return Path(os.getenv("DATABASE_PATH", BASE_DIR / "common_commute.db"))
+    return Path(os.getenv("DATABASE_PATH", BASE_DIR / "common_compute.db"))
 
 
 SCHEMA_SQL = """

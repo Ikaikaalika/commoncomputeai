@@ -1,0 +1,37 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="silverStroke" x1="24" y1="18" x2="102" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#D5DCE4"/>
+      <stop offset="0.52" stop-color="#AEB5BE"/>
+      <stop offset="1" stop-color="#868E97"/>
+    </linearGradient>
+    <linearGradient id="silverBack" x1="30" y1="38" x2="92" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6F7782"/>
+      <stop offset="1" stop-color="#3F4650"/>
+    </linearGradient>
+    <linearGradient id="nodeFill" x1="34" y1="18" x2="98" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#DBF0FF"/>
+      <stop offset="1" stop-color="#8EC9F8"/>
+    </linearGradient>
+    <filter id="softGlow" x="6" y="0" width="116" height="116" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#8CC8FF" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <g filter="url(#softGlow)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64 12L104 30L64 48L24 30L64 12Z" stroke="url(#silverStroke)" stroke-width="4.5"/>
+    <path d="M64 36L104 54L64 72L24 54L64 36Z" stroke="url(#silverStroke)" stroke-width="4.5" opacity="0.8"/>
+    <path d="M64 60L104 78L64 96L24 78L64 60Z" stroke="url(#silverBack)" stroke-width="4.5" opacity="0.92"/>
+    <path d="M64 12V84" stroke="url(#silverStroke)" stroke-width="4.5" opacity="0.92"/>
+    <path d="M36 24V60" stroke="url(#silverStroke)" stroke-width="4.5" opacity="0.78"/>
+    <path d="M88 30V62" stroke="url(#silverStroke)" stroke-width="4.5" opacity="0.78"/>
+    <path d="M36 24L64 48L88 30" stroke="url(#silverStroke)" stroke-width="4.5"/>
+    <path d="M36 60L64 48L100 62" stroke="url(#silverStroke)" stroke-width="4.5"/>
+    <circle cx="64" cy="12" r="7" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.7" stroke-width="1.2"/>
+    <circle cx="36" cy="24" r="7" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.7" stroke-width="1.2"/>
+    <circle cx="88" cy="30" r="7" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.7" stroke-width="1.2"/>
+    <circle cx="64" cy="48" r="7" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.7" stroke-width="1.2"/>
+    <circle cx="36" cy="60" r="7" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.7" stroke-width="1.2"/>
+    <circle cx="100" cy="62" r="7" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.7" stroke-width="1.2"/>
+    <circle cx="64" cy="84" r="7" fill="url(#nodeFill)" stroke="#DFF2FF" stroke-opacity="0.7" stroke-width="1.2"/>
+  </g>
+</svg>

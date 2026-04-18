@@ -1,20 +1,18 @@
-# Common Commute
+# Common Compute
 
-Common Commute is a Mac-first distributed compute marketplace. The canonical product surface is now the FastAPI app under `apps/api`, with Cloudflare used for edge delivery and AWS used for backend runtime and data services.
+Common Compute is a Mac-first distributed compute marketplace. The canonical product surface is now the FastAPI app under `apps/api`, with Cloudflare used for edge delivery and AWS used for backend runtime and data services.
 
 ## Repo Layout
 
 - `apps/api` - FastAPI website and API
-- `apps/macos/CommonCommute` - SwiftUI provider worker companion
+- `apps/macos/CommonCompute` - SwiftUI provider worker companion
 - `infra/aws` - backend deployment starter
 - `tests` - root API and page smoke tests
 - `scripts` - root seed and smoke scripts
-- `apps/control-plane` - legacy Cloudflare Worker control plane kept for reference
-- `packages/contracts` - shared TypeScript contracts used by the legacy stack
 
 ## What this build ships
 
-- Public landing page for the new Common Commute direction
+- Public landing page for the new Common Compute direction
 - For Mac Owners page for provider onboarding, controls, and earnings
 - For Developers page for workload submission and API access
 - Pricing, Security, Docs, and Download pages for the launch funnel
@@ -69,7 +67,3 @@ API_BASE=http://127.0.0.1:8000 node scripts/smoke-api.mjs
 - `API_BASE_URL` controls the website's client-side API target.
 - `COMMONCOMMUTE_API_BASE_URL` or `API_BASE_URL` controls the macOS app backend target.
 - `DATABASE_PATH` overrides the SQLite file used by the FastAPI app.
-
-## Legacy Path
-
-The old Cloudflare Worker control plane remains in `apps/control-plane`, but it is no longer the primary product path. Use the `legacy:*` npm scripts only if you need that reference stack.

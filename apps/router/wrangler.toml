@@ -1,0 +1,30 @@
+name = "commoncompute-router"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "commoncompute"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+[[r2_buckets]]
+binding = "ARTIFACTS"
+bucket_name = "commoncompute-artifacts"
+
+[durable_objects]
+bindings = [
+  { name = "ROUTER_SHARD", class_name = "RouterShard" },
+  { name = "DEVICE_SESSION", class_name = "DeviceSession" },
+]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["RouterShard", "DeviceSession"]
+
+[vars]
+ENVIRONMENT = "staging"
+
+# Secrets (set via `wrangler secret put`):
+# JWT_SECRET
+# ARGON2_PEPPER

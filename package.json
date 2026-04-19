@@ -18,6 +18,10 @@
     "smoke": "tsx tests/smoke/index.ts",
     "smoke:legacy": "node scripts/smoke-api.mjs",
     "seed:demo": "python scripts/seed_demo.py",
+    "seed:local": "tsx scripts/seed-local.ts",
+    "e2e": "tsx tests/e2e/workload.test.ts",
+    "test:mac-app": "tsx tests/e2e/mac-app-flow.test.ts",
+    "migrate:local": "cd apps/router && npx wrangler d1 migrations apply commoncompute --local",
     "type-check": "pnpm --filter @commoncompute/router type-check && pnpm --filter @commoncompute/api-v2 type-check"
   },
   "devDependencies": {

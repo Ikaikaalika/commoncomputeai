@@ -34,11 +34,18 @@ export default function Header() {
               alt=""
               aria-hidden="true"
               className="brand-mark"
-              width={32}
-              height={32}
+              width={36}
+              height={36}
             />
             <div className="brand-copy">
-              <strong>Common Compute</strong>
+              <Image
+                src="/brand/common-compute-wordmark.svg"
+                alt="Common Compute"
+                className="brand-wordmark"
+                width={218}
+                height={48}
+                priority
+              />
               <span>idle macs · useful compute</span>
             </div>
           </Link>

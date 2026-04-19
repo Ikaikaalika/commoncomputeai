@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const FOOTER_LINKS = [
@@ -15,15 +16,28 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-grid">
         <div className="footer-brand">
+          <div className="footer-brand-lockup">
+            <Image
+              src="/brand/common-compute-symbol.svg"
+              alt=""
+              aria-hidden="true"
+              className="footer-brand-mark"
+              width={44}
+              height={44}
+            />
+            <Image
+              src="/brand/common-compute-wordmark.svg"
+              alt="Common Compute"
+              className="footer-brand-wordmark"
+              width={236}
+              height={52}
+            />
+          </div>
           <span className="eyebrow subtle">Common Compute</span>
-          <h2>Practical distributed compute for batch AI workloads.</h2>
-          <p>
-            Common Compute is a distributed compute network powered by idle Macs
-            — for embeddings, transcription, OCR, and dataset preprocessing.
-          </p>
+          <h2>Batch AI at 80% less.</h2>
           <div className="cta-triad footer-actions">
-            <Link href="/developers" className="button">Run a batch workload</Link>
-            <Link href="/providers" className="button secondary">Start earning with your Mac</Link>
+            <Link href="/developers" className="button">Get started</Link>
+            <Link href="/providers" className="button secondary">Start earning</Link>
           </div>
         </div>
 

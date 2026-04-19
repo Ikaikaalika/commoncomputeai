@@ -15,6 +15,22 @@ actor RunnerRegistry {
     private var inFlight: [EngineClass: Int] = [:]
     private var continuations: [EngineClass: [CheckedContinuation<Void, Never>]] = [:]
 
+    // MARK: - Runner instances (one per runtime type, reused across tasks)
+
+    private let runnerMap: [String: any WorkloadRunner] = [
+        WhisperANERunner.runtimeId:      WhisperANERunner(),
+        CoreMLEmbeddingRunner.runtimeId: CoreMLEmbeddingRunner(),
+        CoreMLVisionRunner.runtimeId:    CoreMLVisionRunner(),
+        VideoToolboxRunner.runtimeId:    VideoToolboxRunner(),
+        MLXInferenceRunner.runtimeId:    MLXInferenceRunner(),
+        MLXImageRunner.runtimeId:        MLXImageRunner(),
+        CPUBenchRunner.runtimeId:        CPUBenchRunner(),
+    ]
+
+    func runner(for taskType: String) -> (any WorkloadRunner)? {
+        runnerMap[taskType]
+    }
+
     // MARK: - Acquire / release
 
     func acquire(engine: EngineClass) async {
@@ -48,12 +64,13 @@ actor RunnerRegistry {
 
     static func advertisedRuntimeIds(for profile: CapabilityProfile) -> [String] {
         var ids: [String] = []
-        if WhisperANERunner.canRun(on: profile) { ids.append(WhisperANERunner.runtimeId) }
-        if CoreMLEmbeddingRunner.canRun(on: profile) { ids.append(CoreMLEmbeddingRunner.runtimeId) }
-        if CoreMLVisionRunner.canRun(on: profile) { ids.append(CoreMLVisionRunner.runtimeId) }
-        if VideoToolboxRunner.canRun(on: profile) { ids.append(VideoToolboxRunner.runtimeId) }
-        if MLXInferenceRunner.canRun(on: profile) { ids.append(MLXInferenceRunner.runtimeId) }
-        if MLXImageRunner.canRun(on: profile) { ids.append(MLXImageRunner.runtimeId) }
+        if WhisperANERunner.canRun(on: profile)         { ids.append(WhisperANERunner.runtimeId) }
+        if CoreMLEmbeddingRunner.canRun(on: profile)    { ids.append(CoreMLEmbeddingRunner.runtimeId) }
+        if CoreMLVisionRunner.canRun(on: profile)       { ids.append(CoreMLVisionRunner.runtimeId) }
+        if VideoToolboxRunner.canRun(on: profile)       { ids.append(VideoToolboxRunner.runtimeId) }
+        if MLXInferenceRunner.canRun(on: profile)       { ids.append(MLXInferenceRunner.runtimeId) }
+        if MLXImageRunner.canRun(on: profile)           { ids.append(MLXImageRunner.runtimeId) }
+        if CPUBenchRunner.canRun(on: profile)           { ids.append(CPUBenchRunner.runtimeId) }
         return ids
     }
 }

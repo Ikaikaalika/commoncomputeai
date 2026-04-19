@@ -12,6 +12,10 @@ targets:
       - path: CommonCompute
         excludes:
           - "**/.DS_Store"
+          - "Resources/Fonts/**"
+      - path: CommonCompute/Resources/Fonts
+        type: folder
+        buildPhase: resources
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: ai.commoncompute.app
       SWIFT_VERSION: 5.10
@@ -26,3 +30,4 @@ targets:
         NSAppTransportSecurity:
           NSAllowsArbitraryLoads: true
         LSUIElement: true
+        ATSApplicationFontsPath: Fonts

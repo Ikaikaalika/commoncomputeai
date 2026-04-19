@@ -1,0 +1,3 @@
+# DMG files are large binaries — build locally with apps/provider/build-dmg.sh
+# and deploy via Cloudflare Pages. Do not commit to git.
+*.dmg

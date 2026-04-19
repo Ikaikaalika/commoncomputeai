@@ -1,18 +1,95 @@
 import Foundation
 
-// MARK: - Auth
+// MARK: - Auth / Session
 
-struct AuthResponse: Codable {
+struct LoginRequest: Encodable {
+    let email: String
+    let password: String
+}
+
+struct RegisterRequest: Encodable {
+    let email: String
+    let password: String
+    let full_name: String
+}
+
+struct LoginResponse: Decodable {
     let token: String
     let userId: String
-    let role: String
+    let email: String
     let fullName: String
+    let expiresIn: Int
 
     enum CodingKeys: String, CodingKey {
         case token
         case userId = "user_id"
-        case role
+        case email
         case fullName = "full_name"
+        case expiresIn = "expires_in"
+    }
+}
+
+struct UserSession: Codable {
+    let token: String
+    let userId: String
+    let email: String
+    let fullName: String
+    let expiresAt: Date
+}
+
+// MARK: - Earnings (M6 placeholder; populated once Stripe is wired)
+
+struct EarningsSummary: Codable, Equatable {
+    let todayUSD: Decimal
+    let last7USD: Decimal
+    let pendingUSD: Decimal
+    let payouts: [PayoutRow]
+}
+
+struct PayoutRow: Codable, Equatable, Identifiable {
+    let id: String
+    let date: Date
+    let amountUSD: Decimal
+    let status: String
+}
+
+// MARK: - Job history
+
+struct JobRecord: Codable, Identifiable {
+    let id: String
+    let type: String
+    let status: JobStatus
+    let engineUsed: String?
+    let startedAt: Date
+    let completedAt: Date?
+    let durationSeconds: Double?
+    let failureReason: String?
+
+    enum JobStatus: String, Codable {
+        case completed, failed
+    }
+}
+
+// MARK: - Routine config
+
+struct RoutineConfig: Codable, Equatable {
+    var acOnlyMode: Bool = true
+    var idleOnlyMode: Bool = false
+    var idleThresholdMinutes: Int = 5
+    var scheduledWindow: ScheduleWindow? = nil
+    var priorityFilter: PriorityFilter = .all
+    var launchAtLogin: Bool = false
+
+    struct ScheduleWindow: Codable, Equatable {
+        var enabled: Bool = false
+        var startHour: Int = 21
+        var endHour: Int = 6
+    }
+
+    enum PriorityFilter: String, Codable, CaseIterable, Equatable {
+        case all = "All tasks"
+        case standardAndPriority = "Standard & Priority"
+        case priorityOnly = "Priority only"
     }
 }
 
@@ -194,5 +271,21 @@ struct RunnerResult: Codable {
         case resultURI = "result_uri"
         case durationSeconds = "duration_seconds"
         case engineUsed = "engine_used"
+    }
+}
+
+// MARK: - Enroll
+
+struct EnrollRequest: Encodable {
+    let capability: CapabilityProfile
+}
+
+struct EnrollResponse: Decodable {
+    let deviceId: String
+    let wsURL: String
+
+    enum CodingKeys: String, CodingKey {
+        case deviceId = "device_id"
+        case wsURL = "ws_url"
     }
 }

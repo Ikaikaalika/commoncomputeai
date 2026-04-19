@@ -5,7 +5,7 @@ import Foundation
 // Reconnects with exponential backoff (1s → 30s cap).
 actor Heartbeat {
     private let deviceId: String
-    private let apiKey: String
+    private let token: String
     private let routerWSURL: URL
     private let capability: CapabilityProfile
     private let telemetrySampler: LiveTelemetrySampler
@@ -20,13 +20,13 @@ actor Heartbeat {
 
     init(
         deviceId: String,
-        apiKey: String,
+        token: String,
         routerWSURL: URL,
         capability: CapabilityProfile,
         telemetrySampler: LiveTelemetrySampler
     ) {
         self.deviceId = deviceId
-        self.apiKey = apiKey
+        self.token = token
         self.routerWSURL = routerWSURL
         self.capability = capability
         self.telemetrySampler = telemetrySampler
@@ -44,7 +44,7 @@ actor Heartbeat {
 
     func connect() async {
         var request = URLRequest(url: routerWSURL)
-        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.setValue(deviceId, forHTTPHeaderField: "X-Device-Id")
 
         let ws = URLSession.shared.webSocketTask(with: request)
@@ -182,9 +182,9 @@ actor LongPollFallback {
     private let deviceId: String
     var onTaskAssigned: ((TaskAssignment) -> Void)?
 
-    init(baseURL: URL, apiKey: String, deviceId: String) {
+    init(baseURL: URL, token: String, deviceId: String) {
         self.baseURL = baseURL
-        self.apiKey = apiKey
+        self.apiKey = token
         self.deviceId = deviceId
     }
 

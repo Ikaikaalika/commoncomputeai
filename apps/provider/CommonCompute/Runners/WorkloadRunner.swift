@@ -25,6 +25,13 @@ protocol WorkloadRunner: Actor {
     func execute(progress: @escaping (Double, String?) -> Void) async throws -> RunnerResult
     /// Clean up after execute (success or failure).
     func teardown() async
+
+    /// Instance-level engine class (bridges static to instance for existential dispatch).
+    var engineClass: EngineClass { get }
+}
+
+extension WorkloadRunner {
+    var engineClass: EngineClass { Self.engine }
 }
 
 // MARK: - Runner errors

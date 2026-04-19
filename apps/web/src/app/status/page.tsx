@@ -1,15 +1,14 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useEffect, useState } from "react";
 import { NT } from "@/components/tokens";
 import Eyebrow from "@/components/Eyebrow";
-
-export const metadata: Metadata = { title: "Status · Common Compute" };
-export const revalidate = 60; // re-build every minute (static export: picks up on deploy)
 
 interface ServiceCheck {
   name: string;
   host: string;
   path: string;
-  status: "up" | "down" | "unknown";
+  status: "checking" | "up" | "down";
   latencyMs?: number;
   error?: string;
 }
@@ -26,9 +25,7 @@ async function probe(endpoint: { name: string; host: string; path: string }): Pr
   try {
     const res = await fetch(url, {
       method: "GET",
-      // Revalidate at build/deploy time; the page is statically exported.
-      next: { revalidate: 60 },
-      // Timeout guard — avoid the whole page hanging on one bad host.
+      cache: "no-store",
       signal: AbortSignal.timeout(5000),
     });
     const latencyMs = Date.now() - start;
@@ -47,12 +44,34 @@ async function probe(endpoint: { name: string; host: string; path: string }): Pr
   }
 }
 
-export default async function StatusPage() {
-  // At static-export time we probe each endpoint once.
-  // Live updates come from subsequent redeploys (we run a nightly cron).
-  const checks: ServiceCheck[] = await Promise.all(ENDPOINTS.map(probe));
-  const allUp = checks.every((c) => c.status === "up");
-  const checkedAt = new Date().toISOString();
+export default function StatusPage() {
+  const [checks, setChecks] = useState<ServiceCheck[]>(
+    ENDPOINTS.map((e) => ({ ...e, status: "checking" }))
+  );
+  const [checkedAt, setCheckedAt] = useState<string>("");
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function run() {
+      const results = await Promise.all(ENDPOINTS.map(probe));
+      if (!cancelled) {
+        setChecks(results);
+        setCheckedAt(new Date().toISOString());
+      }
+    }
+
+    run();
+    const interval = setInterval(run, 30_000);
+    return () => {
+      cancelled = true;
+      clearInterval(interval);
+    };
+  }, []);
+
+  const pending = checks.some((c) => c.status === "checking");
+  const allUp = !pending && checks.every((c) => c.status === "up");
+  const headline = pending ? "Checking…" : allUp ? "All systems operational." : "Partial outage.";
 
   return (
     <section style={{ background: NT.bg, minHeight: "70vh", borderBottom: `1px solid ${NT.line}` }}>
@@ -72,10 +91,10 @@ export default async function StatusPage() {
             fontWeight: 500,
             margin: "16px 0 20px",
             lineHeight: 1.05,
-            color: allUp ? NT.text : NT.blue,
+            color: allUp ? NT.text : pending ? NT.text2 : NT.blue,
           }}
         >
-          {allUp ? "All systems operational." : "Partial outage."}
+          {headline}
         </h1>
         <p
           style={{
@@ -85,7 +104,9 @@ export default async function StatusPage() {
             marginBottom: 40,
           }}
         >
-          Last checked {new Date(checkedAt).toLocaleString("en-US", { timeZone: "UTC" })} UTC · refreshes on each deploy
+          {checkedAt
+            ? `Last checked ${new Date(checkedAt).toLocaleString()} · refreshes every 30 s`
+            : "Probing…"}
         </p>
 
         <div
@@ -140,8 +161,8 @@ export default async function StatusPage() {
                     DOWN {c.error ? `· ${c.error}` : ""}
                   </span>
                 )}
-                {c.status === "unknown" && (
-                  <span style={{ color: NT.text3 }}>UNKNOWN</span>
+                {c.status === "checking" && (
+                  <span style={{ color: NT.text3 }}>CHECKING…</span>
                 )}
               </div>
             </div>
@@ -156,11 +177,12 @@ export default async function StatusPage() {
             lineHeight: 1.55,
           }}
         >
+          Probed from your browser; you see the same reachability as your app would.
           Incidents and scheduled maintenance post to{" "}
           <a href="mailto:support@commoncompute.ai" style={{ color: NT.blue, textDecoration: "none" }}>
             support@commoncompute.ai
           </a>
-          . Historical uptime and per-endpoint dashboards land with the beta release.
+          .
         </p>
       </div>
     </section>

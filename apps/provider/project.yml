@@ -22,6 +22,7 @@ targets:
       CODE_SIGN_STYLE: Automatic
       ENABLE_HARDENED_RUNTIME: YES
       CODE_SIGN_ENTITLEMENTS: CommonCompute/CommonCompute.entitlements
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     info:
       path: CommonCompute/Info.plist
       properties:

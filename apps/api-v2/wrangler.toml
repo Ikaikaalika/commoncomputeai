@@ -40,6 +40,7 @@ MAX_INPUT_SIZE_MB = "100"
 [env.prod]
 # custom_domain = true auto-creates the DNS record that points this
 # subdomain at the Worker. No manual zone config required.
+workers_dev = true
 routes = [
   { pattern = "api.commoncompute.ai", custom_domain = true }
 ]

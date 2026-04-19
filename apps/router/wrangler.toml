@@ -43,6 +43,7 @@ ENVIRONMENT = "staging"
 [env.prod]
 # custom_domain = true auto-creates the DNS record that points this
 # subdomain at the Worker. No manual zone config required.
+workers_dev = true
 routes = [
   { pattern = "router.commoncompute.ai", custom_domain = true }
 ]

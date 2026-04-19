@@ -7,6 +7,8 @@ export interface Env {
   STRIPE_SECRET_KEY: string;
   STRIPE_WEBHOOK_SECRET: string;
   ENVIRONMENT: string;
+  BOOTSTRAP_TOKEN?: string;   // alpha-only; unset to disable admin routes
+  MAX_INPUT_SIZE_MB?: string;
 }
 
 export interface User {

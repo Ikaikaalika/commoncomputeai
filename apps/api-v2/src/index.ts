@@ -10,6 +10,7 @@ import { providersRouter } from './routes/v1/providers';
 import { benchRouter } from './routes/v1/bench';
 import { authRouter } from './routes/v1/auth';
 import { diagRouter } from './routes/v1/diag';
+import { adminRouter } from './routes/v1/admin';
 import { verifyKey } from './auth/apiKeys';
 import { requestLogger } from '@commoncompute/logger';
 
@@ -40,6 +41,9 @@ app.route('/v1/bench', benchRouter);
 
 // Crash + metric diagnostics from the Mac app (MetricKit payloads)
 app.route('/v1/diag', diagRouter);
+
+// Alpha-only admin (bootstrap customers, mint keys). Gated by header.
+app.route('/v1/admin', adminRouter);
 
 // Active devices — for test health checks (requires API key)
 app.get('/v1/devices', async (c) => {

@@ -1,6 +1,6 @@
 import type { Env, Task, CapabilityProfile } from './types';
 import { deviceMatchesTask, deviceScore } from './match';
-import { createLease, extendLease, releaseLease, sweepExpiredLeases, HEARTBEAT_DEAD_THRESHOLD_MS } from './leases';
+import { createLease, extendLease, releaseLease, sweepExpiredLeases, HEARTBEAT_DEAD_THRESHOLD_MS, LEASE_DURATION_MS } from './leases';
 import { compareTasks, replicationFactor, shouldDispatchBatch } from './priority';
 
 // One RouterShard Durable Object instance per task type.
@@ -131,9 +131,26 @@ export class RouterShard implements DurableObject {
     const factor = replicationFactor(task.requirements?.priority as any ?? task.priority);
     const targets = matched.slice(0, factor);
 
+    const attempt = (task.attempts ?? 0) + 1;
+    const leaseExpiresAt = Date.now() + LEASE_DURATION_MS;
     for (const device of targets) {
-      await createLease(this.env.DB, task.id, device.id, (task.attempts ?? 0) + 1);
-      await this.pushToDevice(device.id, { type: 'assign', payload: task });
+      await createLease(this.env.DB, task.id, device.id, attempt);
+      // Push a fully-populated TaskAssignment to the provider app.
+      // requirements must be an object (not the stringified DB form).
+      // lease_expires_at lets the provider know when to give up.
+      await this.pushToDevice(device.id, {
+        type: 'assign',
+        payload: {
+          id: task.id,
+          type: task.type,
+          requirements,          // already parsed above
+          priority: task.priority,
+          input_uri: task.input_uri ?? null,
+          result_put_url: null,  // presigned R2 URL; null for local dev (runner uses fallback)
+          lease_expires_at: leaseExpiresAt,
+          attempt,
+        },
+      });
     }
 
     // Schedule lease expiry sweep alarm (1s).

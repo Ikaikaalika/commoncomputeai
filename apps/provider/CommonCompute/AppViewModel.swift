@@ -14,6 +14,7 @@ actor DeviceState {
 
     private let telemetrySampler = LiveTelemetrySampler()
     private var heartbeat: Heartbeat?
+    private var heartbeatTask: Task<Void, Never>?
     private var telemetryTask: Task<Void, Never>?
     private var pendingJobs: [JobRecord] = []
 
@@ -70,7 +71,13 @@ actor DeviceState {
                 }
             }
 
-            await hb.connect()
+            // Fire-and-forget the WebSocket connect loop so that
+            // AppViewModel.pollLoop() can start reading our status
+            // immediately. Heartbeat.connect() doesn't return until
+            // the WS closes, so awaiting here would keep the app in
+            // the initial .disconnected state forever.
+            heartbeatTask?.cancel()
+            heartbeatTask = Task { await hb.connect() }
         } catch {
             status = .disconnected
             statusError = error.localizedDescription
@@ -79,6 +86,8 @@ actor DeviceState {
 
     func disconnect() {
         heartbeat = nil
+        heartbeatTask?.cancel()
+        heartbeatTask = nil
         telemetryTask?.cancel()
         telemetryTask = nil
         activeTasks = [:]

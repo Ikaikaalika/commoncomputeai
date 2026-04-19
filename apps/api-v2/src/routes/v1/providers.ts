@@ -1,17 +1,14 @@
 import { Hono } from 'hono';
 import type { Env } from '../../types';
-import { verifyKey } from '../../auth/apiKeys';
+import { verifyAuth } from '../../auth/verifyAuth';
 
 export const providersRouter = new Hono<{ Bindings: Env }>();
 
 // POST /v1/providers/enroll — Mac app first-run registration.
-// Returns device_id + ws_url for the DeviceSession Durable Object.
+// Accepts either JWT (provider login) or API key (legacy).
 providersRouter.post('/enroll', async (c) => {
-  const authHeader = c.req.header('Authorization') ?? '';
-  const apiKey = authHeader.replace(/^Bearer\s+/, '');
-
-  const keyRecord = await verifyKey(apiKey, c.env.DB, c.env.ARGON2_PEPPER);
-  if (!keyRecord) return c.json({ error: 'Invalid API key' }, 401);
+  const authResult = await verifyAuth(c.req.header('Authorization') ?? '', c.env);
+  if (!authResult) return c.json({ error: 'Unauthorized' }, 401);
 
   const body = await c.req.json<{ capability: unknown }>();
   if (!body?.capability) return c.json({ error: 'capability required' }, 400);
@@ -21,26 +18,19 @@ providersRouter.post('/enroll', async (c) => {
     `INSERT INTO devices (id, user_id, capabilities, reliability, last_heartbeat_at, created_at)
      VALUES (?, ?, ?, 1.0, ?, ?)`
   )
-    .bind(deviceId, keyRecord.user_id, JSON.stringify(body.capability), Date.now(), Date.now())
+    .bind(deviceId, authResult.user_id, JSON.stringify(body.capability), Date.now(), Date.now())
     .run();
 
-  const wsBase = c.env.ENVIRONMENT === 'production'
-    ? 'wss://router.commoncompute.ai'
-    : 'wss://router-staging.commoncompute.ai';
+  const reqURL = new URL(c.req.url);
+  const wsProto = reqURL.protocol === 'http:' ? 'ws:' : 'wss:';
+  const wsURL = `${wsProto}//${reqURL.host}/v1/providers/connect`;
 
-  return c.json({
-    device_id: deviceId,
-    ws_url: `${wsBase}/v1/providers/connect`,
-  });
+  return c.json({ device_id: deviceId, ws_url: wsURL });
 });
 
 // GET /v1/providers/connect — WebSocket upgrade to DeviceSession DO.
-// Proxied through the router Worker.
 providersRouter.get('/connect', async (c) => {
-  const authHeader = c.req.header('Authorization') ?? '';
-  const apiKey = authHeader.replace(/^Bearer\s+/, '');
-  const keyRecord = await verifyKey(apiKey, c.env.DB, c.env.ARGON2_PEPPER);
-  if (!keyRecord) return c.json({ error: 'Invalid API key' }, 401);
-
+  const authResult = await verifyAuth(c.req.header('Authorization') ?? '', c.env);
+  if (!authResult) return c.json({ error: 'Unauthorized' }, 401);
   return c.env.ROUTER.fetch(c.req.raw);
 });

@@ -95,6 +95,15 @@ export class DeviceSession implements DurableObject {
     active_task_ids?: string[];
   }): Promise<void> {
     if (!this.deviceId) return;
+
+    // Always update the heartbeat timestamp so the device stays eligible for dispatch.
+    await this.env.DB.prepare(
+      `UPDATE devices SET last_heartbeat_at = ? WHERE id = ?`
+    )
+      .bind(Date.now(), this.deviceId)
+      .run();
+
+    // If the device has an active lease, forward to RouterShard to extend the lease.
     const taskType = await this.getDeviceTaskType();
     if (!taskType) return;
 

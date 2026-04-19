@@ -1,20 +1,28 @@
-// Global test account — one user, reused by every test surface.
+// Global test accounts — shared by every test surface (seed scripts,
+// e2e tests, manual Mac-app verification). Two accounts: one on each
+// side of the marketplace.
 //
-// Import this from seed scripts, e2e tests, manual Mac-app testing,
-// and any future smoke/integration runs. Keeping credentials in one
-// place means: (a) no duplicate rows in D1, (b) one password to type
-// during manual verification, (c) test data is easy to grep for and
-// delete later.
-//
-// Safe to commit: this is a test-only account in the test DB. It has
-// no real compute, no payouts, and the password is intentionally weak
-// enough that nobody confuses it with production credentials.
+// Safe to commit — these are test-only credentials in a test user row.
+// The customer API key is minted out-of-band via the admin endpoint
+// and is NOT stored in git (rotates on each bootstrap).
 
-export const TEST_ACCOUNT = {
+export const PROVIDER_ACCOUNT = {
   email: 'test@commoncompute.local',
   password: 'CCTestPass!2026',
   fullName: 'Common Compute Test',
+  role: 'provider',
 } as const;
+
+export const CUSTOMER_ACCOUNT = {
+  email: 'customer@commoncompute.local',
+  fullName: 'Common Compute Customer',
+  role: 'customer',
+  // API key comes from `/v1/admin/bootstrap-customer` (alpha endpoint).
+  // For CI, set CC_TEST_CUSTOMER_KEY env var.
+} as const;
+
+// Backwards-compat alias — earlier commits imported TEST_ACCOUNT (provider).
+export const TEST_ACCOUNT = PROVIDER_ACCOUNT;
 
 // Fake capability profile shaped like what the Mac app sends on enroll.
 // Used by e2e tests that need to register a device without running the

@@ -15,6 +15,25 @@
 // when the account already exists.
 
 import { TEST_ACCOUNT, TEST_CAPABILITY } from '../fixtures/test-account';
+import dns from 'node:dns/promises';
+import { Agent, setGlobalDispatcher } from 'undici';
+
+// macOS's getaddrinfo cache can lag for ~minutes after a fresh
+// custom-domain deploy, making `fetch` throw ENOTFOUND even when
+// `dig` succeeds. Patch the undici dispatcher to resolve A records
+// via 1.1.1.1 directly, bypassing the OS cache entirely.
+const RESOLVER = new dns.Resolver();
+RESOLVER.setServers(['1.1.1.1', '1.0.0.1']);
+setGlobalDispatcher(new Agent({
+  connect: {
+    lookup: (hostname, _opts, cb) => {
+      RESOLVER.resolve4(hostname).then(
+        (addrs) => cb(null, addrs[0], 4),
+        (err) => cb(err, '', 0)
+      );
+    },
+  },
+}));
 
 const API = process.env.API_BASE ?? 'http://127.0.0.1:8787';
 

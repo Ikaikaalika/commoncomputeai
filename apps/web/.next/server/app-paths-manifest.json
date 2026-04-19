@@ -1,17 +1,5 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/blog/page": "app/blog/page.js",
-  "/docs/page": "app/docs/page.js",
-  "/privacy/page": "app/privacy/page.js",
-  "/about/page": "app/about/page.js",
-  "/developers/page": "app/developers/page.js",
-  "/pricing/page": "app/pricing/page.js",
-  "/support/page": "app/support/page.js",
-  "/status/page": "app/status/page.js",
-  "/terms/page": "app/terms/page.js",
-  "/providers/page": "app/providers/page.js",
-  "/download/page": "app/download/page.js",
+  "/docs/[slug]/page": "app/docs/[slug]/page.js",
   "/page": "app/page.js",
-  "/security/page": "app/security/page.js",
-  "/careers/page": "app/careers/page.js"
+  "/pricing/page": "app/pricing/page.js"
 }

@@ -1,23 +1,15 @@
 import type { Metadata } from "next";
-import ContentPage from "@/components/ContentPage";
+import SimplePage from "@/components/SimplePage";
 
-export const metadata: Metadata = {
-  title: "Careers",
-  description: "Open roles at Common Compute.",
-};
+export const metadata: Metadata = { title: "Careers" };
 
 export default function CareersPage() {
   return (
-    <ContentPage
+    <SimplePage
       eyebrow="Careers"
-      headline="Hiring later."
-      lead="The company is not framing itself as a recruiting site yet. This page exists to keep the sitemap complete and can grow into openings later."
-      ctaPrimary={{ label: "Home", href: "/" }}
-      cards={[
-        { title: "Product", body: "Build a system that is trustworthy enough for both providers and customers." },
-        { title: "Infrastructure", body: "Ship practical tooling for Mac owners and batch AI developers." },
-        { title: "Later", body: "Open roles can land here when the team is ready." },
-      ]}
+      title="We're hiring builders."
+      body="Common Compute is a small team building infrastructure for the next decade of AI compute. If you care about distributed systems, deterministic pricing, and idle hardware put to work — get in touch."
+      cta={{ label: "Email the team", href: "mailto:hello@commoncompute.ai" }}
     />
   );
 }

@@ -1,24 +1,15 @@
 import type { Metadata } from "next";
-import ContentPage from "@/components/ContentPage";
+import SimplePage from "@/components/SimplePage";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "Common Compute is building a trusted distributed compute network powered by idle Macs.",
-};
+export const metadata: Metadata = { title: "About" };
 
 export default function AboutPage() {
   return (
-    <ContentPage
+    <SimplePage
       eyebrow="About"
-      headline="Common Compute is building a trusted distributed compute network powered by idle Macs."
-      lead="The product is designed for affordable batch AI workloads, fair provider payouts, and clear execution controls."
-      ctaPrimary={{ label: "Download", href: "/download" }}
-      ctaSecondary={{ label: "For developers", href: "/developers" }}
-      cards={[
-        { title: "Trust", body: "Transparent usage, verified work, and no hidden background activity." },
-        { title: "Efficiency", body: "Lower-cost AI execution that uses existing hardware better." },
-        { title: "Fairness", body: "A marketplace that works for both compute providers and buyers." },
-      ]}
+      title="A public network for batch AI compute."
+      body="Common Compute is building a distributed network for batch AI workloads. We pool the idle capacity of Apple Silicon Macs into a single, deterministically priced compute layer — cheaper than hyperscalers, paid out fairly to the people who run the hardware."
+      cta={{ label: "Read the docs", href: "/docs" }}
     />
   );
 }

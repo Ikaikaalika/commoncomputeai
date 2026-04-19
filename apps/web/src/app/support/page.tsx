@@ -1,24 +1,15 @@
 import type { Metadata } from "next";
-import ContentPage from "@/components/ContentPage";
+import SimplePage from "@/components/SimplePage";
 
-export const metadata: Metadata = {
-  title: "Support",
-  description: "Support options for providers and developers.",
-};
+export const metadata: Metadata = { title: "Support" };
 
 export default function SupportPage() {
   return (
-    <ContentPage
+    <SimplePage
       eyebrow="Support"
-      headline="Help for providers, developers, and evaluators."
-      lead="Support should be direct. Keep the contact path visible, keep the onboarding docs current, and keep the answers practical."
-      ctaPrimary={{ label: "Read docs", href: "/docs" }}
-      ctaSecondary={{ label: "Download", href: "/download" }}
-      cards={[
-        { title: "Email", body: "support@commoncompute.ai" },
-        { title: "Onboarding", body: "Follow the provider setup and developer API docs first." },
-        { title: "FAQ", body: "Most launch questions are answered on the download and security pages." },
-      ]}
+      title="Get in touch."
+      body="Email hello@commoncompute.ai for anything — billing questions, integration help, capacity requests, provider issues. We answer within one business day."
+      cta={{ label: "Email the team", href: "mailto:hello@commoncompute.ai" }}
     />
   );
 }

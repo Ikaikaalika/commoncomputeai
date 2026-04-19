@@ -1,57 +1,76 @@
-import Image from "next/image";
 import Link from "next/link";
+import NetworkLogo from "./NetworkLogo";
+import Wordmark from "./Wordmark";
+import { NT, N_link } from "./tokens";
 
-const FOOTER_LINKS = [
-  { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
-  { href: "/status", label: "Status" },
-  { href: "/privacy", label: "Privacy" },
-  { href: "/terms", label: "Terms" },
-  { href: "/support", label: "Support" },
-  { href: "/careers", label: "Careers" },
+const COLUMNS: Array<[string, Array<[string, string]>]> = [
+  ["Product", [["Network", "/"], ["Developers", "/developers"], ["Pricing", "/pricing"], ["Status", "/status"]]],
+  ["Build", [["SDK docs", "/docs"], ["API reference", "/docs/first-job"], ["Examples", "/developers"], ["Changelog", "/blog"]]],
+  ["Earn", [["Download Mac app", "/providers"], ["Provider guide", "/docs/provider-install"], ["Payouts", "/docs/provider-payouts"], ["Requirements", "/providers"]]],
+  ["Company", [["About", "/about"], ["Blog", "/blog"], ["Security", "/security"], ["Contact", "/support"]]],
 ];
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="container footer-grid">
-        <div className="footer-brand">
-          <div className="footer-brand-lockup">
-            <Image
-              src="/brand/common-compute-symbol.svg"
-              alt=""
-              aria-hidden="true"
-              className="footer-brand-mark"
-              width={44}
-              height={44}
-            />
-            <Image
-              src="/brand/common-compute-wordmark.svg"
-              alt="Common Compute"
-              className="footer-brand-wordmark"
-              width={236}
-              height={52}
-            />
+    <footer style={{ borderTop: `1px solid ${NT.line}`, background: NT.bg }}>
+      <div
+        style={{
+          maxWidth: 1240,
+          margin: "0 auto",
+          padding: "56px 32px 28px",
+          fontFamily: NT.display,
+          display: "grid",
+          gridTemplateColumns: "1.4fr repeat(4, 1fr)",
+          gap: 40,
+        }}
+      >
+        <div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <NetworkLogo size={24} />
+            <Wordmark size={15} color={NT.text} />
           </div>
-          <span className="eyebrow subtle">Common Compute</span>
-          <h2>Batch AI at 80% less.</h2>
-          <div className="cta-triad footer-actions">
-            <Link href="/developers" className="button">Get started</Link>
-            <Link href="/providers" className="button secondary">Start earning</Link>
-          </div>
+          <p style={{ fontSize: 12.5, color: NT.text3, lineHeight: 1.55, margin: "14px 0 0", maxWidth: 260 }}>
+            A distributed network for batch AI workloads. Cheaper than hyperscalers. Deterministic per-task pricing.
+          </p>
         </div>
-
-        <nav className="footer-links" aria-label="Footer">
-          {FOOTER_LINKS.map((link) => (
-            <Link key={link.href} href={link.href}>
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        {COLUMNS.map(([title, links]) => (
+          <div key={title}>
+            <div
+              style={{
+                fontFamily: NT.mono,
+                fontSize: 10.5,
+                letterSpacing: 1,
+                textTransform: "uppercase",
+                color: NT.text3,
+                marginBottom: 14,
+              }}
+            >
+              {title}
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+              {links.map(([label, href]) => (
+                <Link key={label} href={href} style={N_link({ fontSize: 13 })}>
+                  {label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
-      <div className="container footer-meta">
-        <span>© Common Compute</span>
-        <span>All rights reserved</span>
+      <div
+        style={{
+          maxWidth: 1240,
+          margin: "0 auto",
+          padding: "0 32px 28px",
+          fontFamily: NT.mono,
+          fontSize: 11,
+          color: NT.text4,
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <div>© {new Date().getFullYear()} Common Compute, Inc.</div>
+        <div>Built on idle Apple Silicon.</div>
       </div>
     </footer>
   );

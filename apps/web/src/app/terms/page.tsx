@@ -1,24 +1,15 @@
 import type { Metadata } from "next";
-import ContentPage from "@/components/ContentPage";
+import SimplePage from "@/components/SimplePage";
 
-export const metadata: Metadata = {
-  title: "Terms",
-  description: "Marketplace terms and service rules.",
-};
+export const metadata: Metadata = { title: "Terms" };
 
 export default function TermsPage() {
   return (
-    <ContentPage
+    <SimplePage
       eyebrow="Terms"
-      headline="Simple service rules for a practical marketplace."
-      lead="Provider responsibilities, customer obligations, and service limits in plain English."
-      ctaPrimary={{ label: "Read privacy", href: "/privacy" }}
-      ctaSecondary={{ label: "Get support", href: "/support" }}
-      cards={[
-        { title: "Providers", body: "Set limits, keep the app current, and run approved workloads only." },
-        { title: "Customers", body: "Submit valid jobs, respect verification outcomes, and pay for completed work." },
-        { title: "Platform", body: "Operate the marketplace honestly and keep the rules visible." },
-      ]}
+      title="Terms of service."
+      body="The full terms will be published when the network launches publicly. Until then, contact us for the early-access agreement."
+      cta={{ label: "Email the team", href: "mailto:hello@commoncompute.ai" }}
     />
   );
 }

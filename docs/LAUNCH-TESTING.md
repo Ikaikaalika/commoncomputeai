@@ -47,9 +47,10 @@ Nothing ships to alpha providers until all of these are green.
 - [ ] `os_log` with a subsystem of `ai.commoncompute.app` replaces `print`/silent failures in APIClient, Heartbeat, runners. `log stream --predicate 'subsystem == "ai.commoncompute.app"'` shows the lifecycle of a signed-in session.
 
 ### Observability (minimum viable)
-- [ ] Structured JSON logs from api-v2 + router. Every request logs `{ts, route, user_id?, device_id?, duration_ms, status}`. Cloudflare Logpush set up to an Axiom/Logtail dataset (cheapest path: Axiom free tier is plenty for alpha).
-- [ ] One dashboard per worker: request rate, error rate, p50/p95 latency. Alert: error rate > 5% over 5 min → email.
-- [ ] `apps/web/src/app/status/page.tsx` wired to pull the three health-checks (web, api, router) + last-24h uptime from Axiom. No more placeholder text.
+- [x] Structured JSON logs from api-v2 + router. Every request logs `{ts, route, user_id?, device_id?, duration_ms, status}` via `@commoncompute/logger`.
+- [x] **Cloudflare Workers Logs** enabled in both `wrangler.toml` files via `[observability]`. Free, native, no third-party signup. View in the Cloudflare dashboard (Workers → Logs) or stream with `npx wrangler tail commoncompute-api --format pretty`. 7-day retention.
+- [ ] Alert: Cloudflare Email Routing rule or a lightweight Worker that tails the Logs API and emails on error rate > 5% over 5 min. (Post-alpha nice-to-have; dashboard eyeballs are fine for alpha.)
+- [x] `apps/web/src/app/status/page.tsx` probes the three health-checks (web, api, router) at static-export time. No external uptime service needed; rebuilds pick up fresh data.
 
 ### CI gates (added before alpha)
 - [ ] `.github/workflows/ci.yml` extended:

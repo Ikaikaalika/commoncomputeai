@@ -14,13 +14,18 @@ compatibility_flags = ["nodejs_compat"]
 
 [[d1_databases]]
 binding = "DB"
-database_name = "commoncompute"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_name = "commoncompute-v2"
+database_id = "b53be441-4a15-48bd-8197-078a4956d5d2"
 migrations_dir = "migrations"
 
 [[r2_buckets]]
 binding = "ARTIFACTS"
 bucket_name = "commoncompute-artifacts"
+
+# Cloudflare Workers Logs — free, native, no external service.
+[observability]
+enabled = true
+head_sampling_rate = 1
 
 [durable_objects]
 bindings = [
@@ -36,11 +41,29 @@ new_classes = ["RouterShard", "DeviceSession"]
 ENVIRONMENT = "staging"
 
 [env.prod]
+# custom_domain = true auto-creates the DNS record that points this
+# subdomain at the Worker. No manual zone config required.
 routes = [
-  { pattern = "router.commoncompute.ai/*", zone_name = "commoncompute.ai" }
+  { pattern = "router.commoncompute.ai", custom_domain = true }
 ]
+d1_databases = [
+  { binding = "DB", database_name = "commoncompute-v2", database_id = "b53be441-4a15-48bd-8197-078a4956d5d2", migrations_dir = "migrations" }
+]
+r2_buckets = [
+  { binding = "ARTIFACTS", bucket_name = "commoncompute-artifacts" }
+]
+[env.prod.durable_objects]
+bindings = [
+  { name = "ROUTER_SHARD", class_name = "RouterShard" },
+  { name = "DEVICE_SESSION", class_name = "DeviceSession" },
+]
+[[env.prod.migrations]]
+tag = "v1"
+new_classes = ["RouterShard", "DeviceSession"]
 [env.prod.vars]
 ENVIRONMENT = "prod"
+[env.prod.observability]
+enabled = true
 
 [env.staging.vars]
 ENVIRONMENT = "staging"

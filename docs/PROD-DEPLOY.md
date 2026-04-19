@@ -108,21 +108,29 @@ API_BASE=https://api.commoncompute.ai pnpm test:mac-app
 
 Last line creates the global test account in prod D1 (idempotent).
 
-## 8. Wire Cloudflare Logpush → Axiom
+## 8. View logs
 
-See `docs/OBSERVABILITY.md` (to be written as part of the alpha gate).
-Basic steps:
+Zero setup — each `wrangler.toml` already has `[observability] enabled = true`.
+JSON lines emitted by the shared logger land in:
 
-1. Create an Axiom dataset `commoncompute-workers`.
-2. Cloudflare dashboard → Workers → Logs → Create Logpush job → pick Axiom.
-3. Within 5 minutes, the `http.request` JSON lines start flowing.
+- **Cloudflare dashboard** → Workers → `commoncompute-api` → Logs tab.
+  Filterable by fields; 7-day retention on free + paid plans.
+- **Terminal** live-tail:
+  ```bash
+  cd apps/api-v2 && npx wrangler tail commoncompute-api --env prod --format pretty
+  cd apps/router && npx wrangler tail commoncompute-router --env prod --format pretty
+  ```
+
+No external service, no signup, no secrets to manage. When we outgrow
+Cloudflare's retention (weeks of data, custom dashboards), we can add
+Grafana Cloud's free tier or Baselime later.
 
 ## 9. Status page
 
-After Logpush is running, the `commoncompute.ai/status` page reads live
-uptime from Axiom's query API. Set `AXIOM_QUERY_TOKEN` in the web
-project's build env (`wrangler pages secret put`) and the page will
-populate on next deploy.
+`apps/web/src/app/status/page.tsx` probes the three health endpoints at
+static-export time. Each `pnpm deploy:web` refreshes the page. For
+always-fresh uptime, we'll schedule a nightly deploy via Cloudflare
+Cron once the beta gate opens.
 
 ## Rollback
 

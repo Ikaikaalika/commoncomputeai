@@ -10,13 +10,21 @@ compatibility_flags = ["nodejs_compat"]
 
 [[d1_databases]]
 binding = "DB"
-database_name = "commoncompute"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_name = "commoncompute-v2"
+database_id = "b53be441-4a15-48bd-8197-078a4956d5d2"
 migrations_dir = "migrations"
 
 [[r2_buckets]]
 binding = "ARTIFACTS"
 bucket_name = "commoncompute-artifacts"
+
+# Cloudflare Workers Logs — free, native, no external service.
+# JSON lines emitted by the logger middleware show up in the
+# Cloudflare dashboard (Workers → commoncompute-api → Logs) and via
+# `npx wrangler tail`. ~7 days of retention on free/paid plans.
+[observability]
+enabled = true
+head_sampling_rate = 1
 
 [[services]]
 binding = "ROUTER"
@@ -30,11 +38,25 @@ MAX_INPUT_SIZE_MB = "100"
 # Deploy prod with:   wrangler deploy --env prod
 # Deploy staging with: wrangler deploy --env staging
 [env.prod]
+# custom_domain = true auto-creates the DNS record that points this
+# subdomain at the Worker. No manual zone config required.
 routes = [
-  { pattern = "api.commoncompute.ai/*", zone_name = "commoncompute.ai" }
+  { pattern = "api.commoncompute.ai", custom_domain = true }
+]
+d1_databases = [
+  { binding = "DB", database_name = "commoncompute-v2", database_id = "b53be441-4a15-48bd-8197-078a4956d5d2", migrations_dir = "migrations" }
+]
+r2_buckets = [
+  { binding = "ARTIFACTS", bucket_name = "commoncompute-artifacts" }
+]
+services = [
+  { binding = "ROUTER", service = "commoncompute-router-prod" }
 ]
 [env.prod.vars]
 ENVIRONMENT = "prod"
+MAX_INPUT_SIZE_MB = "100"
+[env.prod.observability]
+enabled = true
 
 [env.staging.vars]
 ENVIRONMENT = "staging"

@@ -79,6 +79,11 @@ struct RoutineConfig: Codable, Equatable {
     var scheduledWindow: ScheduleWindow? = nil
     var priorityFilter: PriorityFilter = .all
     var launchAtLogin: Bool = false
+    // Non-technical-friendly settings
+    var enableNotifications: Bool = true
+    // Runtime strings the user has opted out of (e.g. "mlx_llm").
+    // Defaults to empty — all runtimes enabled.
+    var disabledRuntimes: Set<String> = []
 
     struct ScheduleWindow: Codable, Equatable {
         var enabled: Bool = false

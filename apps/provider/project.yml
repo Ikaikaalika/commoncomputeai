@@ -30,5 +30,4 @@ targets:
         LSMinimumSystemVersion: "14.0"
         NSAppTransportSecurity:
           NSAllowsArbitraryLoads: true
-        LSUIElement: true
         ATSApplicationFontsPath: Fonts

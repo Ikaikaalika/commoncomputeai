@@ -197,6 +197,16 @@ final class AppViewModel: ObservableObject {
     @Published private(set) var earnings: EarningsSummary? = nil
     @Published var routineConfig: RoutineConfig = RoutineConfig()
 
+    // Observable helpers the UI reads directly.
+    let telemetryHistory = TelemetryHistory()
+    let activityLog = ActivityLog()
+    let router = AppRouter()
+
+    // Track prior state so we only log/notify on transitions.
+    private var lastConnectionStatus: ConnectionStatus = .disconnected
+    private var lastPauseReason: String? = nil
+    private var lastDisconnectAt: Date? = nil
+
     var statusLabel: String {
         switch connectionStatus {
         case .disconnected:  return "Disconnected"
@@ -304,6 +314,9 @@ final class AppViewModel: ObservableObject {
             activeTasks = tk
             statusError = e
 
+            // Feed the history buffer so charts have data.
+            if let t { telemetryHistory.record(t) }
+
             // Sync connection status + routine evaluation.
             switch s {
             case .disconnected:
@@ -325,9 +338,53 @@ final class AppViewModel: ObservableObject {
                 if pauseReason == nil { connectionStatus = .paused }
             }
 
+            await noteStatusTransitions()
+
             for job in jobs { appendJob(job) }
 
             try? await Task.sleep(nanoseconds: 2_000_000_000)
+        }
+    }
+
+    // MARK: - Status transition notifications + activity log
+
+    private func noteStatusTransitions() async {
+        defer {
+            lastConnectionStatus = connectionStatus
+            lastPauseReason = pauseReason
+        }
+        if connectionStatus != lastConnectionStatus {
+            switch connectionStatus {
+            case .connected:
+                activityLog.connected()
+                lastDisconnectAt = nil
+            case .disconnected:
+                activityLog.disconnected(reason: statusError)
+                if lastDisconnectAt == nil { lastDisconnectAt = Date() }
+            case .paused:
+                if pauseReason != nil {
+                    activityLog.paused(reason: pauseReason)
+                    if routineConfig.enableNotifications, let reason = pauseReason {
+                        await NotificationManager.shared.postPaused(reason: reason)
+                    }
+                }
+            case .enrolling, .reconnecting:
+                break
+            }
+        } else if connectionStatus == .paused, pauseReason != lastPauseReason {
+            // Pause reason changed while still paused (e.g. thermal → schedule).
+            if let reason = pauseReason {
+                activityLog.paused(reason: reason)
+            }
+        }
+
+        // Offline notification after 5 min disconnected.
+        if connectionStatus == .disconnected,
+           let since = lastDisconnectAt,
+           Date().timeIntervalSince(since) > 5 * 60,
+           routineConfig.enableNotifications {
+            await NotificationManager.shared.postOfflineWarning()
+            lastDisconnectAt = Date()  // suppress until next 5-min gap
         }
     }
 
@@ -336,6 +393,13 @@ final class AppViewModel: ObservableObject {
     private func appendJob(_ job: JobRecord) {
         jobHistory.insert(job, at: 0)
         if jobHistory.count > 200 { jobHistory = Array(jobHistory.prefix(200)) }
+
+        // Feed the Dashboard activity feed.
+        switch job.status {
+        case .completed: activityLog.taskCompleted(type: job.type, duration: job.durationSeconds)
+        case .failed:    activityLog.taskFailed(type: job.type, reason: job.failureReason ?? "Unknown error")
+        }
+
         persistJobHistory()
     }
 

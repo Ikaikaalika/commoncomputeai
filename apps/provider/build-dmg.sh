@@ -2,6 +2,20 @@
 # Build Common Compute.app and package it into a distributable DMG.
 # Usage: ./build-dmg.sh [version]
 # Requires: Xcode command-line tools, hdiutil (built into macOS)
+#
+# Signing + notarization (opt-in, via env vars):
+#
+#   CC_CODESIGN_IDENTITY   — "Developer ID Application: Your Name (TEAMID)"
+#                            If unset, the build is ad-hoc signed (dev only).
+#   CC_NOTARY_KEYCHAIN_PROFILE
+#                          — profile name set up with:
+#                              xcrun notarytool store-credentials <profile> \
+#                                --apple-id <you@example.com> --team-id <TEAMID> \
+#                                --password <app-specific password>
+#                            If unset, notarization is skipped.
+#
+# If both are set, the DMG is signed, notarized, and stapled — ready
+# to distribute to end users without Gatekeeper friction.
 
 set -euo pipefail
 
@@ -20,13 +34,26 @@ trap cleanup EXIT
 echo "==> Building ${APP_NAME} ${VERSION}"
 echo "    Project: ${SCRIPT_DIR}/CommonCompute.xcodeproj"
 
+# Signing flags — ad-hoc if no identity configured.
+CODESIGN_FLAGS=(ONLY_ACTIVE_ARCH=NO)
+if [ -n "${CC_CODESIGN_IDENTITY:-}" ]; then
+  echo "    Signing with: ${CC_CODESIGN_IDENTITY}"
+  CODESIGN_FLAGS+=(
+    CODE_SIGN_STYLE=Manual
+    CODE_SIGN_IDENTITY="${CC_CODESIGN_IDENTITY}"
+    OTHER_CODE_SIGN_FLAGS="--timestamp"
+  )
+else
+  echo "    No CC_CODESIGN_IDENTITY — ad-hoc signing (dev only)."
+fi
+
 # Build Release
 xcodebuild \
   -project "${SCRIPT_DIR}/CommonCompute.xcodeproj" \
   -scheme "${BUNDLE_NAME}" \
   -configuration Release \
   -derivedDataPath "${BUILD_DIR}" \
-  ONLY_ACTIVE_ARCH=NO \
+  "${CODESIGN_FLAGS[@]}" \
   clean build \
   | xcpretty 2>/dev/null || cat  # fall back to raw output if xcpretty not installed
 
@@ -35,6 +62,21 @@ APP_PATH="${BUILD_DIR}/Build/Products/Release/${BUNDLE_NAME}.app"
 if [ ! -d "${APP_PATH}" ]; then
   echo "ERROR: Build failed — ${APP_PATH} not found"
   exit 1
+fi
+
+# Notarize the app bundle if a notary profile is configured.
+if [ -n "${CC_CODESIGN_IDENTITY:-}" ] && [ -n "${CC_NOTARY_KEYCHAIN_PROFILE:-}" ]; then
+  echo "==> Notarizing app bundle"
+  NOTARY_ZIP="/tmp/cc-notary-$$.zip"
+  ditto -c -k --keepParent "${APP_PATH}" "${NOTARY_ZIP}"
+  xcrun notarytool submit "${NOTARY_ZIP}" \
+    --keychain-profile "${CC_NOTARY_KEYCHAIN_PROFILE}" \
+    --wait
+  rm -f "${NOTARY_ZIP}"
+  xcrun stapler staple "${APP_PATH}"
+  echo "✓ App notarized + stapled."
+else
+  echo "==> Skipping notarization (no CC_NOTARY_KEYCHAIN_PROFILE set)."
 fi
 
 echo "==> Staging DMG contents"
@@ -52,6 +94,20 @@ hdiutil create \
   -format UDZO \
   -imagekey zlib-level=9 \
   "${OUT_DIR}/${DMG_NAME}.dmg"
+
+# Sign + notarize the DMG itself when credentials are configured.
+if [ -n "${CC_CODESIGN_IDENTITY:-}" ]; then
+  codesign --sign "${CC_CODESIGN_IDENTITY}" --timestamp "${OUT_DIR}/${DMG_NAME}.dmg"
+  echo "✓ DMG signed."
+fi
+if [ -n "${CC_CODESIGN_IDENTITY:-}" ] && [ -n "${CC_NOTARY_KEYCHAIN_PROFILE:-}" ]; then
+  echo "==> Notarizing DMG"
+  xcrun notarytool submit "${OUT_DIR}/${DMG_NAME}.dmg" \
+    --keychain-profile "${CC_NOTARY_KEYCHAIN_PROFILE}" \
+    --wait
+  xcrun stapler staple "${OUT_DIR}/${DMG_NAME}.dmg"
+  echo "✓ DMG notarized + stapled."
+fi
 
 echo ""
 echo "✓ DMG created: ${OUT_DIR}/${DMG_NAME}.dmg"

@@ -9,6 +9,7 @@
     "mint-key": "tsx scripts/mintKey.ts"
   },
   "dependencies": {
+    "@commoncompute/logger": "*",
     "hono": "^4.6.0",
     "nanoid": "^5.0.0"
   },

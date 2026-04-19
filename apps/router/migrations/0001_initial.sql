@@ -3,6 +3,7 @@
 CREATE TABLE IF NOT EXISTS users (
   id TEXT PRIMARY KEY,
   email TEXT UNIQUE NOT NULL,
+  full_name TEXT NOT NULL DEFAULT '',
   password_hash TEXT NOT NULL,  -- argon2id
   role TEXT NOT NULL DEFAULT 'customer',
   created_at INTEGER NOT NULL

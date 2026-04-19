@@ -43,6 +43,7 @@
 		B392C5C102CFD6A17AD7EF53 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5557AF4B32E00D765CA2632E /* Brand.swift */; };
 		B6DC792C197527DC0486176A /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7FDE30748321D36744E58FB /* HelpView.swift */; };
 		B9BD5ECA63A67A55117C9674 /* TelemetryHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 411A9FA11A6348AB53045BC8 /* TelemetryHistory.swift */; };
+		C8FF0407B982A1314F3DF2FC /* DiagnosticsReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA2FF880BBE2A4015F5510 /* DiagnosticsReporter.swift */; };
 		CF71B9C7D2D36AF89873A1D5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0295F71BCF61DA62FB495E09 /* OnboardingView.swift */; };
 		D37C20EBBE77EB956A574929 /* WhisperANERunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E5163DF91B4E89F32A970 /* WhisperANERunner.swift */; };
 		D76CAED052EC19ADC47BEC64 /* MenuBarPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA922692943C42087CF40C6 /* MenuBarPopoverView.swift */; };
@@ -90,6 +91,7 @@
 		AB7E5163DF91B4E89F32A970 /* WhisperANERunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperANERunner.swift; sourceTree = "<group>"; };
 		AF3F9F51F0FCB6338ABCA1C6 /* JobInspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInspectorView.swift; sourceTree = "<group>"; };
 		B1387F4C03685BFC7369C792 /* NetworkLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogo.swift; sourceTree = "<group>"; };
+		B3BA2FF880BBE2A4015F5510 /* DiagnosticsReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagnosticsReporter.swift; sourceTree = "<group>"; };
 		BD3A33F5DCCFE19FDBAB44CF /* ActivityLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLog.swift; sourceTree = "<group>"; };
 		BE13B1E95FCA5FA068792042 /* CommonCommuteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCommuteApp.swift; sourceTree = "<group>"; };
 		C2153F24A6D9700120B9943B /* MLXInferenceRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLXInferenceRunner.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				D3494B72783B70F97C11BF7D /* CommonCompute.entitlements */,
 				D5FDDD4957B95094BA66A5FF /* CommonComputeCommands.swift */,
 				F7E817BDB705F55F89ECD298 /* DashboardView.swift */,
+				B3BA2FF880BBE2A4015F5510 /* DiagnosticsReporter.swift */,
 				9CC6DD894E6AD0F6E1254767 /* EarningsView.swift */,
 				FDDDD7C6936E44F65BA65864 /* ErrorPresenter.swift */,
 				E7FDE30748321D36744E58FB /* HelpView.swift */,
@@ -203,7 +206,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		"TEMP_EB46C078-3199-4E4D-A88D-EEB61638EF55" /* Resources */ = {
+		"TEMP_71E56CE6-3D13-4698-B054-2DF13B811BB7" /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -295,6 +298,7 @@
 				E8A82F65A3375C418C6D38A3 /* CoreMLEmbeddingRunner.swift in Sources */,
 				2395E475B221896132ADF97E /* CoreMLVisionRunner.swift in Sources */,
 				2B602D5320035C634A3AD001 /* DashboardView.swift in Sources */,
+				C8FF0407B982A1314F3DF2FC /* DiagnosticsReporter.swift in Sources */,
 				211DE5BEFD31856FA05F5ADF /* Dot.swift in Sources */,
 				601ADCB186B55796CDF07AA7 /* EarningsView.swift in Sources */,
 				1BDFB472EE415263475BD0EA /* ErrorPresenter.swift in Sources */,

@@ -3,11 +3,16 @@ import Foundation
 final class APIClient {
     let baseURL: URL
 
-    init() {
+    // Exposed so DiagnosticsReporter and similar singletons can compute
+    // URLs without holding an APIClient instance.
+    static let baseURL: String = {
         let env = ProcessInfo.processInfo.environment
         let raw = env["COMMONCOMPUTE_API_BASE_URL"] ?? env["API_BASE_URL"] ?? "https://api.commoncompute.ai"
-        let trimmed = raw.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
-        baseURL = URL(string: trimmed)!
+        return raw.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+    }()
+
+    init() {
+        baseURL = URL(string: APIClient.baseURL)!
     }
 
     // MARK: - Generic request

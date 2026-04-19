@@ -1,0 +1,11 @@
+{
+  "name": "@commoncompute/logger",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "logger.ts",
+  "types": "logger.ts",
+  "exports": {
+    ".": "./logger.ts"
+  }
+}

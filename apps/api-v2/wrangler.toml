@@ -3,24 +3,44 @@ main = "src/index.ts"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
 
+# Prod custom domain: api.commoncompute.ai
+# Configure once in the Cloudflare dashboard
+# (Workers → commoncompute-api → Triggers → Add Custom Domain).
+# The Mac app defaults to https://api.commoncompute.ai.
+
 [[d1_databases]]
 binding = "DB"
 database_name = "commoncompute"
 database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "migrations"
 
 [[r2_buckets]]
 binding = "ARTIFACTS"
 bucket_name = "commoncompute-artifacts"
 
-[service_bindings]
-ROUTER = { service = "commoncompute-router" }
+[[services]]
+binding = "ROUTER"
+service = "commoncompute-router"
 
 [vars]
 ENVIRONMENT = "staging"
 MAX_INPUT_SIZE_MB = "100"
 
-# Secrets (set via `wrangler secret put`):
+# Per-environment overrides.
+# Deploy prod with:   wrangler deploy --env prod
+# Deploy staging with: wrangler deploy --env staging
+[env.prod]
+routes = [
+  { pattern = "api.commoncompute.ai/*", zone_name = "commoncompute.ai" }
+]
+[env.prod.vars]
+ENVIRONMENT = "prod"
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
+
+# Secrets (set once per env via `wrangler secret put --env prod <NAME>`):
 # JWT_SECRET
 # ARGON2_PEPPER
-# STRIPE_SECRET_KEY
-# STRIPE_WEBHOOK_SECRET
+# STRIPE_SECRET_KEY     (beta)
+# STRIPE_WEBHOOK_SECRET (beta)

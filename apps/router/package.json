@@ -8,6 +8,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@commoncompute/logger": "*",
     "hono": "^4.6.0"
   },
   "devDependencies": {

@@ -3,10 +3,20 @@ main = "src/index.ts"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
 
+# Router runs as an internal service. api-v2 talks to it via the
+# [services] binding in apps/api-v2/wrangler.toml; the router also
+# exposes a WebSocket upgrade at /v1/providers/connect that the Mac
+# app connects to.
+#
+# For prod we bind it to router.commoncompute.ai so the ws_url the
+# Mac app receives from /v1/providers/enroll is stable. Set once in
+# the Cloudflare dashboard.
+
 [[d1_databases]]
 binding = "DB"
 database_name = "commoncompute"
 database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "migrations"
 
 [[r2_buckets]]
 binding = "ARTIFACTS"
@@ -25,6 +35,16 @@ new_classes = ["RouterShard", "DeviceSession"]
 [vars]
 ENVIRONMENT = "staging"
 
-# Secrets (set via `wrangler secret put`):
+[env.prod]
+routes = [
+  { pattern = "router.commoncompute.ai/*", zone_name = "commoncompute.ai" }
+]
+[env.prod.vars]
+ENVIRONMENT = "prod"
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
+
+# Secrets (set once per env via `wrangler secret put --env prod <NAME>`):
 # JWT_SECRET
 # ARGON2_PEPPER

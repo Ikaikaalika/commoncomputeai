@@ -1,10 +1,16 @@
 import { Hono } from 'hono';
 import type { Env } from './types';
+import { requestLogger } from '@commoncompute/logger';
 
 export { RouterShard } from './RouterShard';
 export { DeviceSession } from './DeviceSession';
 
-const app = new Hono<{ Bindings: Env }>();
+const app = new Hono<{ Bindings: Env; Variables: { log: any } }>();
+
+// Structured JSON request logging → Cloudflare Logpush → Axiom.
+app.use('*', (c, next) =>
+  requestLogger({ service: 'router', environment: c.env.ENVIRONMENT ?? 'unknown' })(c, next)
+);
 
 // Health check
 app.get('/healthz', (c) => c.json({ ok: true, service: 'router' }));
@@ -37,7 +43,7 @@ app.post('/internal/tasks', async (c) => {
 
 // Internal: sweep expired leases across all task types (called by Cron trigger).
 app.post('/internal/sweep', async (c) => {
-  const taskTypes = ['whisper_ane', 'coreml_embed', 'coreml_vision', 'vt_transcode', 'mlx_llm', 'mlx_image'];
+  const taskTypes = ['whisper_ane', 'coreml_embed', 'coreml_vision', 'vt_transcode', 'mlx_llm', 'mlx_image', 'cpu_bench'];
   let total = 0;
   for (const type of taskTypes) {
     const shardId = c.env.ROUTER_SHARD.idFromName(type);

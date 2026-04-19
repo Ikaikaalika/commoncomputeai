@@ -28,13 +28,13 @@ Nothing ships to alpha providers until all of these are green.
 ### API + router deploy
 - [ ] `apps/api-v2` deployed to `api.commoncompute.ai` (custom route in `wrangler.toml`). `curl -sI https://api.commoncompute.ai/healthz` returns 200.
 - [ ] `apps/router` deployed to `router.commoncompute.ai` (or a workers.dev subdomain). Health-check and WebSocket endpoint reachable.
-- [ ] D1 `commoncompute` created in prod; `apps/api-v2/schema.sql` applied; `apps/router/migrations/*` applied. One manual verify: `wrangler d1 execute commoncompute --remote --command "SELECT COUNT(*) FROM users;"` returns 0.
+- [ ] D1 `commoncompute` created in prod; `apps/router/migrations/*` applied (api-v2's `migrations/` is a symlink to the same folder). One manual verify: `wrangler d1 execute commoncompute --remote --command "SELECT COUNT(*) FROM users;"` returns 0.
 - [ ] Secrets set via `wrangler secret put`: `JWT_SECRET`, `ARGON2_PEPPER`. Stripe secrets skipped (alpha = free credits).
 
 ### Auth + enroll + cycle verified in prod
 - [ ] `API_BASE=https://api.commoncompute.ai pnpm test:mac-app` — all 5 steps green. Uses the global test account from `tests/fixtures/test-account.ts` — idempotent re-runs are expected.
 - [ ] `pnpm smoke` — all 10 scenarios pass with a real provider Mac enrolled against prod, customer-side API key issued via new ad-hoc `/admin/grant-credit` endpoint (alpha-only, IP-allowlisted, removed at beta).
-- [ ] Schema drift resolved: router migration 0001 and `apps/api-v2/schema.sql` converge on one source of truth. No more `ALTER TABLE ADD COLUMN full_name` workarounds.
+- [x] Schema drift resolved: `apps/router/migrations/` is the single source of truth; api-v2 symlinks to it; `0002_add_full_name.sql` adds the column the auth route writes to.
 
 ### Mac app hardening
 - [ ] Build signed (Developer ID Application) + notarized. Unsigned quarantine prompt does not appear on a fresh Mac. `spctl -a -vv /Applications/CommonCompute.app` passes.
@@ -150,7 +150,7 @@ Everything in Beta, plus:
 
 ### Week 1 (before alpha)
 1. **Deploy api-v2 and router to prod.** Fix `wrangler.toml` routes. `curl` green from outside. _(½ day)_
-2. **Converge schemas.** Single `migrations/0001_initial.sql` that's the truth, applied to prod D1. Delete the drift between `apps/router/migrations/` and `apps/api-v2/schema.sql`. _(½ day)_
+2. ~~**Converge schemas.**~~ Done — `apps/api-v2/migrations` is now a symlink to `apps/router/migrations`; `0002_add_full_name.sql` patches the users table.
 3. **Structured logging + Axiom pipe.** Add `logger.ts` to each Worker that emits JSON. Cloudflare Logpush → Axiom. _(½ day)_
 4. **Notarize the Mac app.** Developer ID cert, `notarytool` in `build-dmg.sh`. One-time setup cost. _(1 day)_
 5. **MetricKit crash capture.** `MXMetricManager` subscriber in `AppDelegate`, POST diagnostic payloads to `/v1/diag/crash` (new endpoint, stores to R2). _(½ day)_

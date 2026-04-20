@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 };
 
 const RELEASE = {
-  version: "1.1.1",
+  version: "1.1.2",
   date: "April 2026",
   size: "2.4 MB",
   minOS: "macOS 14 Sonoma",
   archs: "Apple Silicon & Intel",
-  dmgPath: "/downloads/CommonCompute-1.1.1.dmg",
+  dmgPath: "/downloads/CommonCompute-1.1.2.dmg",
 };
 
 export default function DownloadPage() {
@@ -51,8 +51,8 @@ export default function DownloadPage() {
             margin: "0 auto 36px",
           }}
         >
-          A signed, notarised menu-bar app. Quietly runs sandboxed AI workloads on your Mac when it&apos;s idle and on
-          power. Pauses instantly when you touch the keyboard.
+          A brand-new menu-bar app in early alpha. Quietly runs sandboxed AI workloads on your
+          Mac when it&apos;s idle and plugged in. Pauses instantly when you touch the keyboard.
         </p>
         <div style={{ display: "flex", gap: 10, justifyContent: "center", flexWrap: "wrap" }}>
           <a
@@ -89,6 +89,32 @@ export default function DownloadPage() {
           <span>{RELEASE.archs}</span>
           <span style={{ color: NT.text4 }}>·</span>
           <span>Released {RELEASE.date}</span>
+        </div>
+
+        {/* Alpha first-run note — the DMG isn't notarised yet, so
+            Gatekeeper will complain the first time. One extra click. */}
+        <div
+          style={{
+            maxWidth: 560,
+            margin: "56px auto 0",
+            padding: "20px 22px",
+            background: NT.panel,
+            border: `1px solid ${NT.line}`,
+            borderRadius: 10,
+            textAlign: "left",
+            fontSize: 13,
+            lineHeight: 1.55,
+            color: NT.text2,
+          }}
+        >
+          <div style={{ fontSize: 11, fontFamily: NT.mono, letterSpacing: 1.2, textTransform: "uppercase", color: NT.text3, marginBottom: 8 }}>
+            First launch
+          </div>
+          This alpha build isn&apos;t notarised yet. The first time you open
+          it, macOS will say the developer can&apos;t be verified — right-click
+          the app in <span style={{ fontFamily: NT.mono }}>/Applications</span>,
+          choose <b>Open</b>, then <b>Open</b> again in the dialog.
+          After that it launches normally.
         </div>
       </div>
     </section>

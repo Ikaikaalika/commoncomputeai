@@ -9,6 +9,9 @@ export interface Env {
   ENVIRONMENT: string;
   BOOTSTRAP_TOKEN?: string;   // alpha-only; unset to disable admin routes
   MAX_INPUT_SIZE_MB?: string;
+  // Cloudflare native rate-limiting binding (see wrangler.toml).
+  // Missing at dev time if you don't run against a real worker.
+  RL_REGISTER?: { limit: (opts: { key: string }) => Promise<{ success: boolean }> };
 }
 
 export interface User {

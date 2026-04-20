@@ -26,7 +26,7 @@ struct LoginView: View {
                 }
             }
         }
-        .frame(width: 420, height: showRegister ? 560 : 480)
+        .frame(width: 420, height: showRegister ? 640 : 480)
         .animation(.easeInOut(duration: 0.2), value: showRegister)
     }
 
@@ -156,6 +156,8 @@ private struct RegisterForm: View {
 
     var body: some View {
         VStack(spacing: 12) {
+            whatIsThisBlurb
+
             field("FULL NAME", text: $fullName, contentType: .name, isSecure: false, lowercase: false)
             field("EMAIL", text: $email, contentType: .emailAddress, isSecure: false, lowercase: true)
             field("PASSWORD (MIN 8)", text: $password, contentType: .newPassword, isSecure: true, lowercase: false)
@@ -174,7 +176,7 @@ private struct RegisterForm: View {
                 if isLoading {
                     ProgressView().controlSize(.small).frame(maxWidth: .infinity)
                 } else {
-                    Text("Create account").frame(maxWidth: .infinity)
+                    Text("Create account and start earning").frame(maxWidth: .infinity)
                 }
             }
             .buttonStyle(CCPrimaryButtonStyle())
@@ -194,6 +196,24 @@ private struct RegisterForm: View {
         }
         .padding(.horizontal, 28)
         .padding(.bottom, 24)
+    }
+
+    // A one-paragraph "what are you signing up for" above the form so
+    // non-technical friends know exactly what this app does before they
+    // create an account.
+    private var whatIsThisBlurb: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("WHAT YOU'RE SIGNING UP FOR").eyebrow()
+            Text("Your Mac will run small AI tasks while it's idle and plugged in. It pauses the second you touch the keyboard. Payouts arrive weekly once billing goes live.")
+                .font(.ccDisplay(size: 12))
+                .foregroundStyle(CC.text2)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(12)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(CC.panel2, in: RoundedRectangle(cornerRadius: 8))
+        .overlay(RoundedRectangle(cornerRadius: 8).strokeBorder(CC.line, lineWidth: 1))
+        .padding(.bottom, 4)
     }
 
     @ViewBuilder

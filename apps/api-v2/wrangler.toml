@@ -30,6 +30,15 @@ head_sampling_rate = 1
 binding = "ROUTER"
 service = "commoncompute-router"
 
+# Cloudflare's native rate-limiting binding. 5 registrations per 60s
+# per client IP — enough that a friend re-signing up isn't blocked,
+# low enough that a drive-by spray hits the 429 quickly.
+[[unsafe.bindings]]
+name = "RL_REGISTER"
+type = "ratelimit"
+namespace_id = "1001"
+simple = { limit = 5, period = 60 }
+
 [vars]
 ENVIRONMENT = "staging"
 MAX_INPUT_SIZE_MB = "100"
@@ -53,6 +62,11 @@ r2_buckets = [
 services = [
   { binding = "ROUTER", service = "commoncompute-router-prod" }
 ]
+[[env.prod.unsafe.bindings]]
+name = "RL_REGISTER"
+type = "ratelimit"
+namespace_id = "1001"
+simple = { limit = 5, period = 60 }
 [env.prod.vars]
 ENVIRONMENT = "prod"
 MAX_INPUT_SIZE_MB = "100"

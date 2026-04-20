@@ -7,6 +7,29 @@ export const authRouter = new Hono<{ Bindings: Env }>();
 
 // POST /v1/auth/register
 authRouter.post('/register', async (c) => {
+  // Rate limit by IP: 5 / minute. Protects D1 from spray signups.
+  // CF-Connecting-IP is set by Cloudflare's edge on every request.
+  const log = (c as any).var?.log;
+  if (c.env.RL_REGISTER) {
+    const ip = c.req.header('CF-Connecting-IP') ?? c.req.header('x-forwarded-for') ?? 'unknown';
+    try {
+      const res = await c.env.RL_REGISTER.limit({ key: ip });
+      log?.info('auth.register.ratelimit', { ip, success: res.success });
+      if (!res.success) {
+        return c.json(
+          { error: 'Too many sign-up attempts from this network. Try again in a minute.' },
+          429
+        );
+      }
+    } catch (err) {
+      log?.warn('auth.register.ratelimit_error', {
+        err: err instanceof Error ? err.message : String(err),
+      });
+    }
+  } else {
+    log?.warn('auth.register.ratelimit_missing', {});
+  }
+
   const body = await c.req.json<{ email?: string; password?: string; full_name?: string }>();
   const { email, password, full_name } = body;
   if (!email || !password || !full_name) {

@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 };
 
 const RELEASE = {
-  version: "1.1.2",
+  version: "1.1.3",
   date: "April 2026",
   size: "2.4 MB",
   minOS: "macOS 14 Sonoma",
   archs: "Apple Silicon & Intel",
-  dmgPath: "/downloads/CommonCompute-1.1.2.dmg",
+  dmgPath: "/downloads/CommonCompute-1.1.3.dmg",
 };
 
 export default function DownloadPage() {
